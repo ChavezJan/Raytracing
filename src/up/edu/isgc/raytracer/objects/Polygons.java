@@ -6,6 +6,10 @@ import up.edu.isgc.raytracer.Tools.Vector3D;
 
 import java.awt.*;
 
+/**
+ * In progress
+ */
+
 public class Polygons extends Object3D{
     /**
      * It is the constructor of the Object3D
