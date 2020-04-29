@@ -1,4 +1,4 @@
-package up.edu.isgc.raytracer;
+package up.edu.isgc.raytracer.Tools;
 
 public class Ray {
 

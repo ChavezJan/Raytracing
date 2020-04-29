@@ -1,9 +1,8 @@
 package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.Intersection;
-import up.edu.isgc.raytracer.Ray;
-import up.edu.isgc.raytracer.Vector3D;
-import up.edu.isgc.raytracer.objects.Object3D;
+import up.edu.isgc.raytracer.Tools.Intersection;
+import up.edu.isgc.raytracer.Tools.Ray;
+import up.edu.isgc.raytracer.Tools.Vector3D;
 
 import java.awt.*;
 

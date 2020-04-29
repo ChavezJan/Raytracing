@@ -1,4 +1,4 @@
-package up.edu.isgc.raytracer;
+package up.edu.isgc.raytracer.Tools;
 
 import up.edu.isgc.raytracer.objects.Camera;
 import up.edu.isgc.raytracer.objects.Object3D;

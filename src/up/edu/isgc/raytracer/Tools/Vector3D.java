@@ -1,6 +1,4 @@
-package up.edu.isgc.raytracer;
-
-import java.util.Vector;
+package up.edu.isgc.raytracer.Tools;
 
 public class Vector3D {
 

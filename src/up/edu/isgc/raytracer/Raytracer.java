@@ -1,5 +1,9 @@
 package up.edu.isgc.raytracer;
 
+import up.edu.isgc.raytracer.Tools.Intersection;
+import up.edu.isgc.raytracer.Tools.Ray;
+import up.edu.isgc.raytracer.Tools.Scene;
+import up.edu.isgc.raytracer.Tools.Vector3D;
 import up.edu.isgc.raytracer.objects.Camera;
 import up.edu.isgc.raytracer.objects.Object3D;
 import up.edu.isgc.raytracer.objects.Sphere;
