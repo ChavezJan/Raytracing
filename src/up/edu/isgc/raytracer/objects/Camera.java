@@ -19,12 +19,17 @@ public class Camera extends Object3D {
     // 0 is width
     // 1 is height
     private int[] resolution;
+    // 0 is Near
+    // 1 is Far
+    private float[] NearFarPlane = new float[2];
 
-    public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution, int heightResolution) {
+    public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution, int heightResolution, float nearPlane, float farPlane) {
         super(position, Color.black);
         setFieldOfViewHorizontal(fieldOfViewHorizontal);
         setFieldOfViewVertical(fieldOfViewVertical);
         setResolution(new int[]{widthResolution, heightResolution});
+        setNearFarPlane(new float[]{nearPlane, farPlane});
+
     }
 
     public float[] getFieldOfView() {
@@ -99,6 +104,14 @@ public class Camera extends Object3D {
         }
 
         return positions;
+    }
+
+    public float[] getNearFarPlane() {
+        return NearFarPlane;
+    }
+
+    public void setNearFarPlane(float[] nearFarPlane) {
+        NearFarPlane = nearFarPlane;
     }
 
     @Override

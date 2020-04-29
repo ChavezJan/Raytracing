@@ -13,19 +13,17 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Raytracer {
-    /**
-     * Main, here is were we put the objects and run the scene
-     * @param args
-     */
-    public static void main(String[] args) {
+
+    public static void InitialRaytracer() {
         System.out.println(new Date());
         Scene scene01 = new Scene();
-        scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800));
-        scene01.addObject(new Sphere(new Vector3D(.5, .5, -3.6), 0.5f, Color.RED));
-        scene01.addObject(new Sphere(new Vector3D(-.5, -.5, 2.4), 0.5f, Color.BLUE));
-        scene01.addObject(new Sphere(new Vector3D(.5, -.5, -3), 0.5f, Color.GREEN));
-        scene01.addObject(new Sphere(new Vector3D(-.5, .5, -3), 0.5f, Color.WHITE));
+        scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800 , 12.7f, 50f));
+        scene01.addObject(new Sphere(new Vector3D(.5, .5, 6), 0.5f, Color.RED));
+        scene01.addObject(new Sphere(new Vector3D(-.5, -.5, 7), 0.5f, Color.BLUE));
+        scene01.addObject(new Sphere(new Vector3D(.5, -.5, 7.5), 0.5f, Color.GREEN));
+        scene01.addObject(new Sphere(new Vector3D(-.5, .5, 5), 0.5f, Color.WHITE));
 
+        
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
         try{
@@ -36,8 +34,17 @@ public class Raytracer {
         System.out.println(new Date());
     }
 
+    /**
+     *
+     * generates the rays that the camera shoots to generate the Image
+     *
+     * @param scene is loaded with objects and the camera
+     * @return the loaded Image
+     */
     public static BufferedImage raytrace(Scene scene) {
+
         Camera mainCamera = scene.getCamera();
+        float[] nearFarPlanes = mainCamera.getNearFarPlane();
         BufferedImage image = new BufferedImage(mainCamera.getResolutionWidth(), mainCamera.getResolutionHeight(), BufferedImage.TYPE_INT_RGB);
         ArrayList<Object3D> objects = scene.getObjects();
 
@@ -49,11 +56,12 @@ public class Raytracer {
                 double z = positionsToRaytrace[i][j].getZ() + mainCamera.getPosition().getZ();
 
                 Ray ray = new Ray(mainCamera.getPosition(), new Vector3D(x, y, z));
-                Intersection closestIntersection = raycast(ray, objects, null);
+                float cameraZ = (float)mainCamera.getPosition().getZ();
+                Intersection closestIntersection = raycast(ray, objects, null, new float[]{cameraZ + nearFarPlanes[0], cameraZ + nearFarPlanes[1]});
 
                 //Background color
                 Color pixelColor = Color.BLACK;
-                if(closestIntersection != null && closestIntersection.getDistance() >= 4f && closestIntersection.getDistance() <= 10 ){
+                if(closestIntersection != null){
                     pixelColor = closestIntersection.getObject().getColor();
                 }
                 image.setRGB(i, j, pixelColor.getRGB());
@@ -63,7 +71,16 @@ public class Raytracer {
         return image;
     }
 
-    public static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster){
+    /**
+     *
+     * Calculate the distance to get the closest intersection
+     *
+     * @param ray
+     * @param objects there are four objects
+     * @param caster = Null
+     * @return closest intersection between the camera and the spheres
+     */
+    public static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster, float[] ClippingPlanes){
         Intersection closestIntersection = null;
 
         for(int k = 0; k < objects.size(); k++){
@@ -72,7 +89,7 @@ public class Raytracer {
                 Intersection intersection = currentObj.getIntersection(ray);
                 if(intersection != null){
                     double distance = intersection.getDistance();
-                    if(distance >= 0 && (closestIntersection == null || distance < closestIntersection.getDistance())){
+                    if(distance >= 0 && (closestIntersection == null || distance < closestIntersection.getDistance()) && (ClippingPlanes == null || (intersection.getPosition().getZ() >= ClippingPlanes[0] && intersection.getPosition().getZ() <= ClippingPlanes[1]))) {
                         closestIntersection = intersection;
                     }
                 }
