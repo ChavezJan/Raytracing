@@ -9,6 +9,16 @@ public class Intersection {
     private Vector3D position;
     private Object3D object;
 
+    /**
+     *
+     * It is the constructor of Intersection
+     *
+     * @param position
+     * @param distance
+     * @param normal
+     * @param object
+     */
+
     public Intersection(Vector3D position, double distance, Vector3D normal, Object3D object) {
         setPosition(position);
         setDistance(distance);

@@ -14,6 +14,13 @@ import java.util.Date;
 
 public class Raytracer {
 
+    /**
+     *
+     * Generate the Scenes adding the Objects
+     *
+     * Saved the Image "image.png"
+     */
+
     public static void InitialRaytracer() {
         System.out.println(new Date());
         Scene scene01 = new Scene();
@@ -36,11 +43,12 @@ public class Raytracer {
 
     /**
      *
-     * generates the rays that the camera shoots to generate the Image
+     * Generate the Buffered Image ready to be saved
      *
      * @param scene is loaded with objects and the camera
      * @return the loaded Image
      */
+
     public static BufferedImage raytrace(Scene scene) {
 
         Camera mainCamera = scene.getCamera();
@@ -76,10 +84,11 @@ public class Raytracer {
      * Calculate the distance to get the closest intersection
      *
      * @param ray
-     * @param objects there are four objects
+     * @param objects
      * @param caster = Null
      * @return closest intersection between the camera and the spheres
      */
+
     public static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster, float[] ClippingPlanes){
         Intersection closestIntersection = null;
 

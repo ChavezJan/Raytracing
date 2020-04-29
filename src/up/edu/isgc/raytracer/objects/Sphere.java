@@ -7,6 +7,10 @@ import up.edu.isgc.raytracer.objects.Object3D;
 
 import java.awt.*;
 
+/**
+ * Class to create spheres
+ */
+
 public class Sphere extends Object3D {
 
     private float radius;
@@ -24,6 +28,14 @@ public class Sphere extends Object3D {
         setRadius(radius);
     }
 
+
+    /**
+     *
+     * Generate the intersection
+     *
+     * @param ray
+     * @return Intersection
+     */
     @Override
     public Intersection getIntersection(Ray ray) {
         double distance = -1;

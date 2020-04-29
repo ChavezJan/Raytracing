@@ -6,8 +6,15 @@ import up.edu.isgc.raytracer.Vector3D;
 
 import java.awt.*;
 
-public class polygons extends Object3D {
-    public polygons(Vector3D position, Color color) {
+public class Polygons extends Object3D{
+    /**
+     * It is the constructor of the Object3D
+     *
+     * @param position
+     * @param color
+     */
+    
+    public Polygons(Vector3D position, Color color) {
         super(position, color);
     }
 

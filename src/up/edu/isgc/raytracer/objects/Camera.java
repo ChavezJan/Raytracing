@@ -11,6 +11,11 @@ import up.edu.isgc.raytracer.objects.Object3D;
 
 import java.awt.*;
 
+/**
+ *
+ * Is the constructor of the camera and it calculate Positions To Ray
+ */
+
 public class Camera extends Object3D {
     // 0 is fovh
     // 1 is fovv
@@ -22,6 +27,19 @@ public class Camera extends Object3D {
     // 0 is Near
     // 1 is Far
     private float[] NearFarPlane = new float[2];
+
+    /**
+     *
+     * It is the constructor of Camera
+     *
+     * @param position
+     * @param fieldOfViewHorizontal
+     * @param fieldOfViewVertical
+     * @param widthResolution
+     * @param heightResolution
+     * @param nearPlane
+     * @param farPlane
+     */
 
     public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution, int heightResolution, float nearPlane, float farPlane) {
         super(position, Color.black);
@@ -79,6 +97,13 @@ public class Camera extends Object3D {
     public int getResolutionHeight(){
         return getResolution()[1];
     }
+
+    /**
+     *
+     * Calculates the ray mesh of the camera and return a two-dimensional position of each pixel
+     *
+     * @return the position
+     */
 
     public Vector3D[][] calculatePositionsToRay() {
         float angleMaxX = 90 - (getFieldOfViewHorizontal() / 2f);

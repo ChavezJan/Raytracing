@@ -11,6 +11,10 @@ public class Scene {
     private Camera camera;
     private ArrayList<Object3D> objects;
 
+    /**
+     * It is the constructor of Scene
+     */
+
     public Scene(){
         setObjects(new ArrayList<Object3D>());
     }
@@ -22,6 +26,12 @@ public class Scene {
     public void setCamera(Camera camera) {
         this.camera = camera;
     }
+
+    /**
+     * Add the Objects to the scene
+     *
+     * @param object
+     */
 
     public void addObject(Object3D object){
         getObjects().add(object);
