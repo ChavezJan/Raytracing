@@ -1,4 +1,4 @@
-package up.edu.isgc.raytracer.Tools;
+package up.edu.isgc.raytracer;
 
 public class Vector3D {
 
@@ -20,6 +20,8 @@ public class Vector3D {
         setY(y);
         setZ(z);
     }
+
+    //getter and setter
 
     public double getX() {
         return x;
@@ -50,7 +52,7 @@ public class Vector3D {
      *
      * @param vectorA
      * @param vectorB
-     * @return the generation of a new vector
+     * @return new object
      */
 
     public static double dotProduct(Vector3D vectorA, Vector3D vectorB){

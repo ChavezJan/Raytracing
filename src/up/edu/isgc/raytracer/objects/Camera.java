@@ -4,14 +4,13 @@
  */
 package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.Tools.Intersection;
-import up.edu.isgc.raytracer.Tools.Ray;
-import up.edu.isgc.raytracer.Tools.Vector3D;
+import up.edu.isgc.raytracer.Intersection;
+import up.edu.isgc.raytracer.Ray;
+import up.edu.isgc.raytracer.Vector3D;
 
 import java.awt.*;
 
 /**
- *
  * Is the constructor of the camera and it calculate Positions To Ray
  */
 
@@ -28,16 +27,15 @@ public class Camera extends Object3D {
     private float[] NearFarPlane = new float[2];
 
     /**
-     *
      * It is the constructor of Camera
      *
      * @param position
-     * @param fieldOfViewHorizontal
-     * @param fieldOfViewVertical
-     * @param widthResolution
-     * @param heightResolution
-     * @param nearPlane
-     * @param farPlane
+     * @param fieldOfViewHorizontal Is in degrees
+     * @param fieldOfViewVertical Is in degrees
+     * @param widthResolution Is in pixels
+     * @param heightResolution Is in pixels
+     * @param nearPlane Relating to the camera position
+     * @param farPlane Relating to the camera position
      */
 
     public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution, int heightResolution, float nearPlane, float farPlane) {
@@ -48,6 +46,8 @@ public class Camera extends Object3D {
         setNearFarPlane(new float[]{nearPlane, farPlane});
 
     }
+
+    //getter and setter
 
     public float[] getFieldOfView() {
         return fieldOfView;
@@ -97,8 +97,15 @@ public class Camera extends Object3D {
         return getResolution()[1];
     }
 
+    public float[] getNearFarPlane() {
+        return NearFarPlane;
+    }
+
+    public void setNearFarPlane(float[] nearFarPlane) {
+        NearFarPlane = nearFarPlane;
+    }
+
     /**
-     *
      * Calculates the ray mesh of the camera and return a two-dimensional position of each pixel
      *
      * @return the position
@@ -128,14 +135,6 @@ public class Camera extends Object3D {
         }
 
         return positions;
-    }
-
-    public float[] getNearFarPlane() {
-        return NearFarPlane;
-    }
-
-    public void setNearFarPlane(float[] nearFarPlane) {
-        NearFarPlane = nearFarPlane;
     }
 
     @Override

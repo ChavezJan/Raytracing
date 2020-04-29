@@ -1,8 +1,8 @@
 package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.Tools.Intersection;
-import up.edu.isgc.raytracer.Tools.Ray;
-import up.edu.isgc.raytracer.Tools.Vector3D;
+import up.edu.isgc.raytracer.Intersection;
+import up.edu.isgc.raytracer.Ray;
+import up.edu.isgc.raytracer.Vector3D;
 
 import java.awt.*;
 
@@ -14,6 +14,8 @@ public class Sphere extends Object3D {
 
     private float radius;
 
+    //getter and setter
+
     public float getRadius() {
         return radius;
     }
@@ -22,11 +24,17 @@ public class Sphere extends Object3D {
         this.radius = radius;
     }
 
+    /**
+     * It is the constructor of Sphere
+     *
+     * @param position
+     * @param radius
+     * @param color
+     */
     public Sphere(Vector3D position, float radius, Color color) {
         super(position, color);
         setRadius(radius);
     }
-
 
     /**
      *
@@ -35,6 +43,7 @@ public class Sphere extends Object3D {
      * @param ray
      * @return Intersection
      */
+
     @Override
     public Intersection getIntersection(Ray ray) {
         double distance = -1;

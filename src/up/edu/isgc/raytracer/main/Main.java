@@ -1,7 +1,8 @@
-package up.edu.isgc.raytracer;
+package up.edu.isgc.raytracer.main;
+
+import up.edu.isgc.raytracer.Raytracer;
 
 /**
- *
  * Ray tracing code
  * Is the Final project of Multimedia and computational graphics class - Universidad Panamericana Campus Guadalajara
  *
@@ -13,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Raytracer.InitialRaytracer();
+        Raytracer.initialRaytracer();
 
     }
 

@@ -1,4 +1,4 @@
-package up.edu.isgc.raytracer.Tools;
+package up.edu.isgc.raytracer;
 
 import up.edu.isgc.raytracer.objects.Object3D;
 
@@ -10,13 +10,12 @@ public class Intersection {
     private Object3D object;
 
     /**
-     *
      * It is the constructor of Intersection
      *
-     * @param position
-     * @param distance
-     * @param normal
-     * @param object
+     * @param position In global coordinates
+     * @param distance Is positive value representing distance in a straight line
+     * @param normal Is the reflection of light on the object
+     * @param object The object you want to get the data
      */
 
     public Intersection(Vector3D position, double distance, Vector3D normal, Object3D object) {
@@ -25,6 +24,8 @@ public class Intersection {
         setNormal(normal);
         setObject(object);
     }
+
+    //getter and setter
 
     public double getDistance() {
         return distance;

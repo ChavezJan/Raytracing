@@ -1,9 +1,5 @@
 package up.edu.isgc.raytracer;
 
-import up.edu.isgc.raytracer.Tools.Intersection;
-import up.edu.isgc.raytracer.Tools.Ray;
-import up.edu.isgc.raytracer.Tools.Scene;
-import up.edu.isgc.raytracer.Tools.Vector3D;
 import up.edu.isgc.raytracer.objects.Camera;
 import up.edu.isgc.raytracer.objects.Object3D;
 import up.edu.isgc.raytracer.objects.Sphere;
@@ -19,13 +15,12 @@ import java.util.Date;
 public class Raytracer {
 
     /**
-     *
      * Generate the Scenes adding the Objects
      *
      * Saved the Image "image.png"
      */
 
-    public static void InitialRaytracer() {
+    public static void initialRaytracer() {
         System.out.println(new Date());
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800 , 12.7f, 50f));
@@ -46,7 +41,6 @@ public class Raytracer {
     }
 
     /**
-     *
      * Generate the Buffered Image ready to be saved
      *
      * @param scene is loaded with objects and the camera
@@ -84,7 +78,6 @@ public class Raytracer {
     }
 
     /**
-     *
      * Calculate the distance to get the closest intersection
      *
      * @param ray

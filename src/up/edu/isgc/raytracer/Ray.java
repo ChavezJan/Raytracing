@@ -1,4 +1,4 @@
-package up.edu.isgc.raytracer.Tools;
+package up.edu.isgc.raytracer;
 
 public class Ray {
 
@@ -6,17 +6,18 @@ public class Ray {
     private Vector3D direction;
 
     /**
-     *
      * It is the constructor of Ray
      *
-     * @param origin
-     * @param direction
+     * @param origin Is where the ray comes from
+     * @param direction It is where the ray goes
      */
 
     public Ray(Vector3D origin, Vector3D direction) {
         setOrigin(origin);
         setDirection(direction);
     }
+
+    //getter and setter
 
     public Vector3D getOrigin() {
         return origin;

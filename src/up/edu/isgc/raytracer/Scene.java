@@ -1,4 +1,4 @@
-package up.edu.isgc.raytracer.Tools;
+package up.edu.isgc.raytracer;
 
 import up.edu.isgc.raytracer.objects.Camera;
 import up.edu.isgc.raytracer.objects.Object3D;
@@ -19,14 +19,6 @@ public class Scene {
         setObjects(new ArrayList<Object3D>());
     }
 
-    public Camera getCamera() {
-        return camera;
-    }
-
-    public void setCamera(Camera camera) {
-        this.camera = camera;
-    }
-
     /**
      * Add the Objects to the scene
      *
@@ -35,6 +27,16 @@ public class Scene {
 
     public void addObject(Object3D object){
         getObjects().add(object);
+    }
+
+    //getter and setter
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public void setCamera(Camera camera) {
+        this.camera = camera;
     }
 
     public ArrayList<Object3D> getObjects() {

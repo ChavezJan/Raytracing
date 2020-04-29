@@ -1,8 +1,8 @@
 package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.Tools.Intersection;
-import up.edu.isgc.raytracer.Tools.Ray;
-import up.edu.isgc.raytracer.Tools.Vector3D;
+import up.edu.isgc.raytracer.Intersection;
+import up.edu.isgc.raytracer.Ray;
+import up.edu.isgc.raytracer.Vector3D;
 
 import java.awt.*;
 
@@ -14,6 +14,8 @@ public abstract class Object3D {
 
     private Vector3D position;
     private Color color;
+
+    //getter and setter
 
     public Vector3D getPosition() {
         return position;
@@ -32,7 +34,6 @@ public abstract class Object3D {
     }
 
     /**
-     *
      * It is the constructor of Object3D
      *
      * @param position
@@ -45,8 +46,7 @@ public abstract class Object3D {
     }
 
     /**
-     *
-     *
+     * It is the constructor of Intersection
      *
      * @param ray
      * @return Intersection
