@@ -1,7 +1,6 @@
 package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.Intersection;
-import up.edu.isgc.raytracer.Ray;
+import up.edu.isgc.raytracer.tools.ICollide;
 import up.edu.isgc.raytracer.Vector3D;
 
 import java.awt.*;
@@ -10,7 +9,7 @@ import java.awt.*;
  *  Its the base for all the object
  */
 
-public abstract class Object3D {
+public abstract class Object3D implements ICollide {
 
     private Vector3D position;
     private Color color;
@@ -45,11 +44,5 @@ public abstract class Object3D {
         setColor(color);
     }
 
-    /**
-     * It is the constructor of Intersection
-     *
-     * @param ray
-     * @return Intersection
-     */
-    public abstract Intersection getIntersection(Ray ray);
+
 }
