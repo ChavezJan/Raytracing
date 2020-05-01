@@ -1,4 +1,4 @@
-package up.edu.isgc.raytracer.tools;
+package up.edu.isgc.raytracer.usedInterface;
 
 import up.edu.isgc.raytracer.Intersection;
 import up.edu.isgc.raytracer.Ray;

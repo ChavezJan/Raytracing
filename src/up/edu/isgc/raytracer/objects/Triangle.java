@@ -1,6 +1,6 @@
 package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.tools.ICollide;
+import up.edu.isgc.raytracer.usedInterface.ICollide;
 import up.edu.isgc.raytracer.Intersection;
 import up.edu.isgc.raytracer.Ray;
 import up.edu.isgc.raytracer.Vector3D;
