@@ -21,12 +21,12 @@ public class Raytracer {
     public static void initialRaytracer() {
         System.out.println(new Date());
         Scene scene01 = new Scene();
-        scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800 , .7f, 50f));
+        scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 1000, 1000 , .7f, 50f));
         // Sphere
         scene01.addObject(new Sphere(new Vector3D(.5, -.5, 7.5), 0.5f, Color.GREEN));
         scene01.addObject(new Sphere(new Vector3D(-.5, .5, 5), 0.5f, Color.WHITE));
         // Polygon - Triangle
-        scene01.addObject(new Polygons(new Vector3D(-1,-1,2), new Triangle[]{ new Triangle(Vector3D.ZERO(), new Vector3D(1,0,0), new Vector3D(1,-1,0)),  new Triangle(Vector3D.ZERO(), new Vector3D(2,0,0), new Vector3D(1,-1,0))}, Color.BLUE));
+        scene01.addObject(new Polygons(new Vector3D(-1,-1,2), new Triangle[]{ new Triangle(Vector3D.ZERO(), new Vector3D(1,0,0), new Vector3D(1,-1,0)),  new Triangle(Vector3D.ZERO(), new Vector3D(2,0,0), new Vector3D(1,-1,0))}, Color.WHITE));
 
         
         BufferedImage image = raytrace(scene01);
