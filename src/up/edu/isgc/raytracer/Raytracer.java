@@ -26,7 +26,7 @@ public class Raytracer {
         scene01.addObject(new Sphere(new Vector3D(.5, -.5, 7.5), 0.5f, Color.GREEN));
         scene01.addObject(new Sphere(new Vector3D(-.5, .5, 5), 0.5f, Color.WHITE));
         // Polygon - Triangle
-        scene01.addObject(new Polygons(new Vector3D(-1,-1,2), new Triangle[]{ new Triangle(Vector3D.ZERO(), new Vector3D(1,0,0), new Vector3D(1,-1,0)),  new Triangle(Vector3D.ZERO(), new Vector3D(2,0,0), new Vector3D(1,-1,0))}, Color.WHITE));
+        scene01.addObject(new Polygons(new Vector3D(-1,-1,2), new Triangle[]{ new Triangle(Vector3D.ZERO(), new Vector3D(1,0,0), new Vector3D(1,-1,0)),  new Triangle(Vector3D.ZERO(), new Vector3D(2,0,0), new Vector3D(1,-1,0))}, Color.PINK));
 
         
         BufferedImage image = raytrace(scene01);

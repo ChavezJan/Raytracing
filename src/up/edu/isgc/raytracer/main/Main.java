@@ -18,8 +18,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException, DataFormatException {
 
-        Raytracer.initialRaytracer();
-        //SelectFile.selectFiles();
+        //Raytracer.initialRaytracer();
+        SelectFile.selectFiles();
 
     }
 
