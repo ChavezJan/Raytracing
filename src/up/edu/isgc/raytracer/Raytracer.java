@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Raytracer {
 
@@ -16,18 +17,25 @@ public class Raytracer {
      * Generate the Scenes adding the Objects
      *
      * Saved the Image "image.png"
+     * @param object
+     * @param triangle
      */
 
-    public static void initialRaytracer() {
+    public static void initialRaytracer(List<String> Triangle) {
         System.out.println(new Date());
         Scene scene01 = new Scene();
+        Triangle[] triangle = new Triangle[Triangle.size()];
+
+
+
         scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 1000, 1000 , .7f, 50f));
         // Sphere
-        scene01.addObject(new Sphere(new Vector3D(.5, -.5, 7.5), 0.5f, Color.GREEN));
-        scene01.addObject(new Sphere(new Vector3D(-.5, .5, 5), 0.5f, Color.WHITE));
+        //scene01.addObject(new Sphere(new Vector3D(.5, -.5, 7.5), 0.5f, Color.GREEN));
+        //scene01.addObject(new Sphere(new Vector3D(-.5, .5, 5), 0.5f, Color.WHITE));
         // Polygon - Triangle
-        scene01.addObject(new Polygons(new Vector3D(-1,-1,2), new Triangle[]{ new Triangle(Vector3D.ZERO(), new Vector3D(1,0,0), new Vector3D(1,-1,0)),  new Triangle(Vector3D.ZERO(), new Vector3D(2,0,0), new Vector3D(1,-1,0))}, Color.PINK));
-
+        scene01.addObject(new Polygons(new Vector3D(0,0,0), triangle , Color.BLUE));
+        // Object added
+        //scene01.addObject(object);
         
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");

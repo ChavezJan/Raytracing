@@ -1,5 +1,6 @@
 package up.edu.isgc.raytracer.objectReader;
 
+import up.edu.isgc.raytracer.PolygonsCreator;
 import up.edu.isgc.raytracer.selector.FileWMeta;
 
 import java.io.BufferedReader;
@@ -12,41 +13,58 @@ import java.util.Scanner;
 
 public class Reader {
 
+    /**
+     *
+     * @param fileWM
+     * @throws IOException
+     */
     public static void objectReader(FileWMeta[] fileWM) throws IOException {
-        String st;
-        char FirstOfLine = ' ', SecondOfLine = ' ';
+        String line;
         List<String> Text = new ArrayList<>();
         List<String> Vector = new ArrayList<>();
         List<String> VectorToDelete = new ArrayList<>();
-
+        List<String> Faces = new ArrayList<>();
 
 
         File file = new File(fileWM[0].getFile().getAbsolutePath());
         BufferedReader br = new BufferedReader(new FileReader(file));
 
-        while ((st = br.readLine()) != null)
-            Text.add(st+".");
+        while ((line = br.readLine()) != null)
+            Text.add(line+"#");
 
-        System.out.println(Text);
+        onlyVectors(Text, Vector, VectorToDelete);
+        Faces(Text, Faces);
 
-        for(int i = 0; i < Text.size(); i++){
 
-            FirstOfLine = Text.get(i).toCharArray()[0];
+        PolygonsCreator.FacesAndVectorsOrganizer(Vector,Faces);
+
+    }
+
+    /**
+     *
+     * @param text
+     * @param Vector
+     * @param VectorToDelete
+     * @return
+     */
+    public static List<String> onlyVectors(List<String> text, List<String> Vector, List<String> VectorToDelete){
+
+        char FirstOfLine = ' ', SecondOfLine = ' ';
+
+        for(int i = 0; i < text.size(); i++){
+
+            FirstOfLine = text.get(i).toCharArray()[0];
 
             if(FirstOfLine == 'v'){
 
-                Vector.add(Text.get(i));
-                System.out.println(Text.get(i));
-                SecondOfLine = Text.get(i).toCharArray()[1];
+                Vector.add(text.get(i));
+                SecondOfLine = text.get(i).toCharArray()[1];
 
                 if (SecondOfLine == 'n' || SecondOfLine == 't'){
-                    VectorToDelete.add(Text.get(i));
+                    VectorToDelete.add(text.get(i));
                 }
             }
         }
-        System.out.println(Vector);
-        System.out.println(VectorToDelete);
-
         for (int x = 0; x < Vector.size(); x++){
             for(int y = 0; y < VectorToDelete.size(); y++){
                 if (Vector.get(x) == VectorToDelete.get(y)){
@@ -54,7 +72,31 @@ public class Reader {
                 }
             }
         }
-        System.out.println(Vector);
+        return Vector;
+    }
+
+    /**
+     *
+     * @param text
+     * @param faces
+     * @return
+     */
+    public static List<String> Faces(List<String> text, List<String> faces){
+
+        char FirstOfLine = ' ';
+
+        for(int i = 0; i < text.size(); i++){
+
+            FirstOfLine = text.get(i).toCharArray()[0];
+
+            if(FirstOfLine == 'f'){
+
+                faces.add(text.get(i));
+
+            }
+        }
+
+        return faces;
     }
 }
 
