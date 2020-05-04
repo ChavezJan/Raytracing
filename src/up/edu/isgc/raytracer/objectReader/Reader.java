@@ -32,6 +32,8 @@ public class Reader {
         while ((line = br.readLine()) != null)
             Text.add(line+"#");
 
+        //System.out.println(Text);
+
         onlyVectors(Text, Vector, VectorToDelete);
         Faces(Text, Faces);
 
@@ -70,8 +72,11 @@ public class Reader {
                 if (Vector.get(x) == VectorToDelete.get(y)){
                     Vector.remove(x);
                 }
+
             }
         }
+        System.out.println("vectores");
+        System.out.println(Vector);
         return Vector;
     }
 
@@ -95,7 +100,8 @@ public class Reader {
 
             }
         }
-
+        System.out.println("faces");
+        System.out.println(faces);
         return faces;
     }
 }

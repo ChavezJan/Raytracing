@@ -19,13 +19,17 @@ public class Raytracer {
      * Saved the Image "image.png"
      * @param object
      * @param triangle
+     * @param Triangle
      */
 
-    public static void initialRaytracer(List<String> Triangle) {
+    public static void initialRaytracer(List<Triangle> Triangle) {
         System.out.println(new Date());
         Scene scene01 = new Scene();
         Triangle[] triangle = new Triangle[Triangle.size()];
 
+        for(int i = 0; i < Triangle.size(); i++){
+            triangle[i] = Triangle.get(i);
+        }
 
 
         scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 1000, 1000 , .7f, 50f));
