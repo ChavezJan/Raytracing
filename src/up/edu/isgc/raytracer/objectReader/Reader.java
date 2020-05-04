@@ -25,14 +25,11 @@ public class Reader {
         List<String> VectorToDelete = new ArrayList<>();
         List<String> Faces = new ArrayList<>();
 
-
         File file = new File(fileWM[0].getFile().getAbsolutePath());
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         while ((line = br.readLine()) != null)
             Text.add(line+"#");
-
-        //System.out.println(Text);
 
         onlyVectors(Text, Vector, VectorToDelete);
         Faces(Text, Faces);
@@ -72,7 +69,6 @@ public class Reader {
                 if (Vector.get(x) == VectorToDelete.get(y)){
                     Vector.remove(x);
                 }
-
             }
         }
         System.out.println("vectores");

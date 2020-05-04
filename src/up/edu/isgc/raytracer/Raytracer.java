@@ -36,11 +36,9 @@ public class Raytracer {
         // Sphere
         //scene01.addObject(new Sphere(new Vector3D(.5, -.5, 7.5), 0.5f, Color.GREEN));
         //scene01.addObject(new Sphere(new Vector3D(-.5, .5, 5), 0.5f, Color.WHITE));
-        // Polygon - Triangle
-        scene01.addObject(new Polygons(new Vector3D(0,0,0), triangle , Color.BLUE));
-        // Object added
-        //scene01.addObject(object);
-        
+        // Polygon - Triangle - Object
+        scene01.addObject(new Polygons(new Vector3D(0,0,0), triangle , Color.RED));
+
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
         try{

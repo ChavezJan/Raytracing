@@ -17,29 +17,13 @@ public class PolygonsCreator {
         List<Triangle> triangle = new ArrayList<>();
         List<Vector3D> VectorsToUse = new ArrayList<>();
 
+        ExtractFaces(faces,VectorOfTheFaces,vector, VectorsToUse);
 
-        int point1,point2,point3;
+        System.out.println("Number of Faces and Vectors");
+        System.out.println("Total Faces -> " + faces.size());
+        System.out.println("Total Vectors -> " + VectorsToUse.size());
 
-        ExtractFaces(faces,VectorOfTheFaces);
-        ExtractVectors(vector, VectorsToUse);
-
-        //new Polygons(new Vector3D(-1,-1,2), new Triangle[]{
-        // new Triangle(Vector3D.ZERO(), new Vector3D(1,0,0), new Vector3D(1,-1,0)),
-        // new Triangle(Vector3D.ZERO(), new Vector3D(2,0,0), new Vector3D(1,-1,0))},
-        // Color.PINK)
-
-        for (int i = 0 ; i < VectorOfTheFaces.size(); i++) {
-
-            String[] vertex = VectorOfTheFaces.get(i).split(" ");
-            point1 = Integer.parseInt(vertex[0]);
-            point2 = Integer.parseInt(vertex[1]);
-            point3 = Integer.parseInt(vertex[2]);
-
-
-            triangle.add( new Triangle(VectorsToUse.get((point1)-1), VectorsToUse.get((point2)-1), VectorsToUse.get((point3)-1)) );
-            //System.out.println(triangle.get(i));
-        }
-
+        makeTriangles(triangle,VectorOfTheFaces,VectorsToUse);
 
         Raytracer.initialRaytracer(triangle);
 
@@ -50,28 +34,42 @@ public class PolygonsCreator {
      *
      * @param strings
      * @param faces
+     * @param vectorsToUse
      * @return
      */
-    public static List<String> ExtractFaces(List<String> faces, List<String> VectorOfTheFaces){
+    public static List<Vector3D> ExtractFaces(List<String> faces, List<String> VectorOfTheFaces, List<String> Vector, List<Vector3D> vectorsToUse){
 
+        int size = -1;
 
         for(int i = 0; i < faces.size(); i++){
 
-            //VectorOfTheFaces.add(String.valueOf(faces.get(i).toCharArray()[2] + " " + faces.get(i).toCharArray()[8] + " " + faces.get(i).toCharArray()[14]));
-            //System.out.println("Face #" + (i + 1) +" vectors " + VectorOfTheFaces.get(i));
 
-            String[] FaceOrder = faces.get(i).split(" ");
-            String[] Vector1 = FaceOrder[1].split("/");
-            String[] Vector2 = FaceOrder[2].split("/");
-            String[] Vector3 = FaceOrder[3].split("/");
+            String[] CleanText = faces.get(i).split("#");
+            String[] FaceOrder = CleanText[0].split(" ");
+            size = FaceOrder.length;
 
-            VectorOfTheFaces.add(Vector1[0] + " " + Vector2[0] + " " + Vector3[0]);
+            if(size == 4) {
 
-            System.out.println("Face #" + (i + 1) + " Vectors " + VectorOfTheFaces.get(i));
+                String[] Vector1 = FaceOrder[1].split("/");
+                String[] Vector2 = FaceOrder[2].split("/");
+                String[] Vector3 = FaceOrder[3].split("/");
 
+                VectorOfTheFaces.add(Vector1[0] + " " + Vector2[0] + " " + Vector3[0]);
+
+            }else if(size == 5){
+
+                String[] Vector1 = FaceOrder[1].split("/");
+                String[] Vector2 = FaceOrder[2].split("/");
+                String[] Vector3 = FaceOrder[3].split("/");
+                String[] Vector4 = FaceOrder[4].split("/");
+
+                VectorOfTheFaces.add(Vector1[0] + " " + Vector2[0] + " " + Vector3[0]);
+                VectorOfTheFaces.add(Vector1[0] + " " + Vector2[0] + " " + Vector4[0]);
+            }else{
+                System.out.println("System Error");
+            }
         }
-
-        return VectorOfTheFaces;
+        return ExtractVectors(Vector,vectorsToUse, size);
     }
 
     /**
@@ -80,29 +78,64 @@ public class PolygonsCreator {
      * @param strings
      * @param vector
      * @param VectorsToUse
+     * @param size
      * @return
      */
-    public static List<Vector3D> ExtractVectors(List<String> vector, List<Vector3D> VectorsToUse){
+    private static List<Vector3D> ExtractVectors(List<String> vector, List<Vector3D> VectorsToUse, int size){
 
         Float x,y,z;
 
-        System.out.println("Vectors that we will use");
+        if(size == 4) {
+            for (int i = 0; i < vector.size(); i++) {
 
-        for(int i = 0; i < vector.size(); i++){
+                String[] VectorPosition = vector.get(i).split(" ");
+                String[] LastVector = VectorPosition[4].split("#");
 
-            String[] VectorPosition = vector.get(i).split(" ");
-            String[] LastVector = VectorPosition[4].split("#");
+                x = Float.valueOf(VectorPosition[2]);
+                y = Float.valueOf(VectorPosition[3]);
+                z = Float.valueOf(LastVector[0]);
 
-            x = Float.valueOf(VectorPosition[2]);
-            y = Float.valueOf(VectorPosition[3]);
-            z = Float.valueOf(LastVector[0]);
+                VectorsToUse.add(new Vector3D(x, y, z));
+            }
+        }else if(size == 5){
+            for (int i = 0; i < vector.size(); i++) {
 
-            VectorsToUse.add(new Vector3D( x, y, z));
-            System.out.println("Vector #" + (i +1) + " " + VectorsToUse.get(i).getX() + ", " + VectorsToUse.get(i).getY() + ", " + VectorsToUse.get(i).getZ());
+                String[] VectorPosition = vector.get(i).split(" ");
+                String[] LastVector = VectorPosition[3].split("#");
+
+                x = Float.valueOf(VectorPosition[1]);
+                y = Float.valueOf(VectorPosition[2]);
+                z = Float.valueOf(LastVector[0]);
+
+                VectorsToUse.add(new Vector3D(x, y, z));
+            }
         }
 
-
         return VectorsToUse;
+    }
+
+    /**
+     *
+     * @param triangle
+     * @param VectorOfTheFaces
+     * @param VectorsToUse
+     * @return
+     */
+    private static List<Triangle> makeTriangles(List<Triangle> triangle, List<String> VectorOfTheFaces, List<Vector3D> VectorsToUse){
+
+        int point1,point2,point3;
+
+        for (int i = 0 ; i < VectorOfTheFaces.size(); i++) {
+
+            String[] vertex = VectorOfTheFaces.get(i).split(" ");
+            point1 = Integer.parseInt(vertex[0]);
+            point2 = Integer.parseInt(vertex[1]);
+            point3 = Integer.parseInt(vertex[2]);
+
+            triangle.add( new Triangle(VectorsToUse.get((point1)-1), VectorsToUse.get((point2)-1), VectorsToUse.get((point3)-1)) );
+        }
+
+        return triangle;
     }
 
 }
