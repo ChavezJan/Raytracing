@@ -17,8 +17,8 @@ import java.util.zip.DataFormatException;
 public class Main {
 
     public static void main(String[] args) throws IOException, DataFormatException {
-        System.out.println(new Date());
 
+        System.out.println(new Date());
         SelectFile.selectFiles();
 
     }
