@@ -1,5 +1,7 @@
-package up.edu.isgc.raytracer;
+package up.edu.isgc.raytracer.objects;
 
+import up.edu.isgc.raytracer.Raytracer;
+import up.edu.isgc.raytracer.Vector3D;
 import up.edu.isgc.raytracer.objects.Triangle;
 
 import java.util.*;
@@ -20,7 +22,7 @@ public class PolygonsCreator {
         ExtractFaces(faces,VectorOfTheFaces,vector, VectorsToUse);
 
         System.out.println("Number of Faces and Vectors");
-        System.out.println("Total Faces -> " + faces.size());
+        System.out.println("Total Faces -> " + VectorOfTheFaces.size());
         System.out.println("Total Vectors -> " + VectorsToUse.size());
 
         makeTriangles(triangle,VectorOfTheFaces,VectorsToUse);
@@ -63,8 +65,12 @@ public class PolygonsCreator {
                 String[] Vector3 = FaceOrder[3].split("/");
                 String[] Vector4 = FaceOrder[4].split("/");
 
-                VectorOfTheFaces.add(Vector1[0] + " " + Vector2[0] + " " + Vector3[0]);
+                //System.out.println(Vector1[0] + " " + Vector2[0] + " " + Vector3[0] + " " + Vector4[0]);
+
                 VectorOfTheFaces.add(Vector1[0] + " " + Vector2[0] + " " + Vector4[0]);
+                //System.out.println(VectorOfTheFaces.get(i));
+                VectorOfTheFaces.add(Vector2[0] + " " + Vector3[0] + " " + Vector4[0]);
+                //System.out.println(VectorOfTheFaces.get(i+1));
             }else{
                 System.out.println("System Error");
             }

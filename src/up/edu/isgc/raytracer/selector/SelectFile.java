@@ -23,15 +23,12 @@ public class SelectFile {
         JFileChooser selector = new JFileChooser();
         JFrame parentFrame = new JFrame();
 
-        System.out.println("Choose all the objects you want to use\n" +
-                "You will have to press CTRL to select all the files clicking one by one..\n"+
-                "Or\n" +
-                "You could click the Shift key and select all the files at one..");
+        System.out.println("Choose the objects you want to use for the Raytracer\n");
 
         chooserConf(selector, parentFrame);
-        File[] Files = askForTheIMGorVIDEO(selector, parentFrame);
+        File[] Files = askForTheOBJ(selector, parentFrame);
 
-        System.out.println("This are your files");
+        System.out.println("This is your file");
 
         FileWMeta[] FileWM = new FileWMeta[Files.length];
 
@@ -41,11 +38,11 @@ public class SelectFile {
             FileWM[x] = new FileWMeta(Files[x]);
         }
 
-        System.out.println("Files were selected successfully!");
+        System.out.println("The file was successfully selected!");
 
         do {
 
-            System.out.println("1) Continue with the Raytracer\n2) Select other files");
+            System.out.println("1) Continue with the Raytracer\n2) Select other file");
             menu = Authenticator.authLet(options);
 
         }while(Authenticator.authNum(menu,options));
@@ -60,8 +57,8 @@ public class SelectFile {
                 break;
             case 2:
 
-                System.out.println("Select the files");
-                selectFiles(); // choose other files
+                System.out.println("Select the file");
+                selectFiles(); // choose other file
 
                 break;
 
@@ -86,12 +83,12 @@ public class SelectFile {
     }
 
     /**
-     * here the user make the decision of the files he want to use
+     * here the user make the decision of the file he want to use
      * @param selector
      * @param parentFrame
-     * @return -->return all the selected files
+     * @return -->return the selected file
      */
-    private static File[] askForTheIMGorVIDEO(JFileChooser selector, JFrame parentFrame){
+    private static File[] askForTheOBJ(JFileChooser selector, JFrame parentFrame){
 
         int Check;
 

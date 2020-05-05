@@ -1,6 +1,6 @@
 package up.edu.isgc.raytracer.objectReader;
 
-import up.edu.isgc.raytracer.PolygonsCreator;
+import up.edu.isgc.raytracer.objects.PolygonsCreator;
 import up.edu.isgc.raytracer.selector.FileWMeta;
 
 import java.io.BufferedReader;
@@ -9,7 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Reader {
 
@@ -71,8 +70,6 @@ public class Reader {
                 }
             }
         }
-        System.out.println("vectores");
-        System.out.println(Vector);
         return Vector;
     }
 
@@ -92,12 +89,13 @@ public class Reader {
 
             if(FirstOfLine == 'f'){
 
+                String[] CleanText = text.get(i).split("#");
+
+
                 faces.add(text.get(i));
 
             }
         }
-        System.out.println("faces");
-        System.out.println(faces);
         return faces;
     }
 }

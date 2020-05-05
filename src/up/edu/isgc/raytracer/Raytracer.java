@@ -23,7 +23,6 @@ public class Raytracer {
      */
 
     public static void initialRaytracer(List<Triangle> Triangle) {
-        System.out.println(new Date());
         Scene scene01 = new Scene();
         Triangle[] triangle = new Triangle[Triangle.size()];
 
