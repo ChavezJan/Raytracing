@@ -30,12 +30,8 @@ public class SelectFile {
 
         System.out.println("This is your file");
 
-        FileWMeta[] FileWM = new FileWMeta[Files.length];
-
-
         for (int x = 0; x < Files.length; x++) {
             System.out.println((x + 1) + " --> " + Files[x].getName());
-            FileWM[x] = new FileWMeta(Files[x]);
         }
 
         System.out.println("The file was successfully selected!");
@@ -52,7 +48,7 @@ public class SelectFile {
             case 1:
 
                 System.out.println("OK so lets continue");
-                Reader.objectReader(FileWM); // continue with the Raytracer
+                Reader.objectReader(Files); // continue with the Raytracer
 
                 break;
             case 2:

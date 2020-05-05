@@ -22,13 +22,10 @@ public class Raytracer {
      * @param Triangle
      */
 
-    public static void initialRaytracer(List<Triangle> Triangle) {
-        Scene scene01 = new Scene();
-        Triangle[] triangle = new Triangle[Triangle.size()];
+    public static void initialRaytracer(Triangle[] Triangle) {
 
-        for(int i = 0; i < Triangle.size(); i++){
-            triangle[i] = Triangle.get(i);
-        }
+        Scene scene01 = new Scene();
+
 
 
         scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 1000, 1000 , .7f, 50f));
@@ -36,7 +33,7 @@ public class Raytracer {
         //scene01.addObject(new Sphere(new Vector3D(.5, -.5, 7.5), 0.5f, Color.GREEN));
         //scene01.addObject(new Sphere(new Vector3D(-.5, .5, 5), 0.5f, Color.WHITE));
         // Polygon - Triangle - Object
-        scene01.addObject(new Polygons(new Vector3D(0,0,0), triangle , Color.RED));
+        scene01.addObject(new Polygons(new Vector3D(0,0,0), Triangle , Color.RED));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
