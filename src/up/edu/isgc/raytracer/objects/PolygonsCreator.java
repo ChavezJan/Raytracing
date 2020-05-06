@@ -1,33 +1,48 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.Raytracer;
 import up.edu.isgc.raytracer.Vector3D;
+import up.edu.isgc.raytracer.objectReader.Reader;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
-
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 public class PolygonsCreator {
 
     /**
      * Calls the necessary functions to accommodate the vectors, faces, and create the triangles
      *
-     * @param vector -> List of vectors
-     * @param faces -> List of faces
+     * @param Files
+     * @param i -> Number of the File
+     * @return The Triangles array
+     * @throws IOException
      */
-    public static void FacesAndVectorsOrganizer(List<String> vector, List<String> faces){
+    public static Triangle[] FacesAndVectorsOrganizer(File[] Files, int i) throws IOException {
+
+        List<String> Vector = new ArrayList<>();
+        List<String> Normal = new ArrayList<>();
+        List<String> Faces = new ArrayList<>();
+
+        Reader.objectReader(Files, Vector, Normal, Faces, i);
 
         List<String> VectorOfTheFaces = new ArrayList<>();
         List<Triangle> triangle = new ArrayList<>();
         List<Vector3D> VectorsToUse = new ArrayList<>();
 
-        ExtractFaces(faces,VectorOfTheFaces,vector, VectorsToUse);
+        ExtractFaces(Faces,VectorOfTheFaces,Vector, VectorsToUse);
 
         System.out.println("Number of Faces and Vectors");
         System.out.println("Total Faces -> " + VectorOfTheFaces.size());
         System.out.println("Total Vectors -> " + VectorsToUse.size());
 
-
-
-        Raytracer.initialRaytracer(makeTriangles(triangle,VectorOfTheFaces,VectorsToUse));
+        return makeTriangles(triangle, VectorOfTheFaces, VectorsToUse);
 
     }
 

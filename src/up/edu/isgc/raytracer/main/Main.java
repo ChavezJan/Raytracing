@@ -1,3 +1,7 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer.main;
 
 import up.edu.isgc.raytracer.selector.SelectFile;
@@ -11,7 +15,8 @@ import java.util.zip.DataFormatException;
  * Is the Final project of Multimedia and computational graphics class - Universidad Panamericana Campus Guadalajara
  *
  * @author ChavezJan
- * @version 0.4
+ * @author Jafet Rodríguez
+ *  @version 0.4
  */
 
 public class Main {

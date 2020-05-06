@@ -1,7 +1,10 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer.selector;
 
-
-
+import up.edu.isgc.raytracer.Raytracer;
 import up.edu.isgc.raytracer.objectReader.Reader;
 
 import javax.swing.*;
@@ -9,7 +12,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
 import java.util.zip.DataFormatException;
-
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 public class SelectFile {
     /**
      * This class is made to make the user to choose the Objects for the project
@@ -28,17 +34,17 @@ public class SelectFile {
         chooserConf(selector, parentFrame);
         File[] Files = askForTheOBJ(selector, parentFrame);
 
-        System.out.println("This is your file");
+        System.out.println("This are your files");
 
         for (int x = 0; x < Files.length; x++) {
             System.out.println((x + 1) + " --> " + Files[x].getName());
         }
 
-        System.out.println("The file was successfully selected!");
+        System.out.println("The files were successfully selected!");
 
         do {
 
-            System.out.println("1) Continue with the Raytracer\n2) Select other file");
+            System.out.println("1) Continue with the Raytracer\n2) Select other files");
             menu = Authenticator.authLet(options);
 
         }while(Authenticator.authNum(menu,options));
@@ -48,12 +54,13 @@ public class SelectFile {
             case 1:
 
                 System.out.println("OK so lets continue");
-                Reader.objectReader(Files); // continue with the Raytracer
+
+                Raytracer.initialRaytracer(Files);
 
                 break;
             case 2:
 
-                System.out.println("Select the file");
+                System.out.println("Select the files");
                 selectFiles(); // choose other file
 
                 break;

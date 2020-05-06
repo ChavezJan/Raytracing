@@ -1,5 +1,12 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer.objects;
-
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 import up.edu.isgc.raytracer.Intersection;
 import up.edu.isgc.raytracer.Ray;
 import up.edu.isgc.raytracer.Vector3D;
@@ -9,10 +16,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-/**
- * In progress
- */
 
 public class Polygons extends Object3D{
 

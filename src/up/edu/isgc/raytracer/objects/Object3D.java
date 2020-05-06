@@ -1,5 +1,12 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer.objects;
-
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 import up.edu.isgc.raytracer.usedInterface.ICollide;
 import up.edu.isgc.raytracer.Vector3D;
 

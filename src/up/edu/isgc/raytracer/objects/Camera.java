@@ -3,7 +3,10 @@
  * All Rights Reserved.
  */
 package up.edu.isgc.raytracer.objects;
-
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 import up.edu.isgc.raytracer.Intersection;
 import up.edu.isgc.raytracer.Ray;
 import up.edu.isgc.raytracer.Vector3D;
@@ -129,7 +132,7 @@ public class Camera extends Object3D {
         for(int x = 0; x < positions.length; x++){
             for(int y = 0; y < positions[x].length; y++){
                 float posX = minX + (((maxX - minX) / (float) getResolutionWidth()) * x);
-                float posY = minY + (((maxY - minY) / (float) getResolutionHeight()) * y);
+                float posY = maxY - (((maxY - minY) / (float) getResolutionHeight()) * y);
                 positions[x][y] = new Vector3D(posX, posY, posZ);
             }
         }

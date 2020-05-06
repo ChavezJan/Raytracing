@@ -1,5 +1,12 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer;
-
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 public class Vector3D {
 
     private static final Vector3D ZERO = new Vector3D(0.0, 0.0, 0.0);

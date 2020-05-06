@@ -1,10 +1,17 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer.objects;
 
 import up.edu.isgc.raytracer.usedInterface.ICollide;
 import up.edu.isgc.raytracer.Intersection;
 import up.edu.isgc.raytracer.Ray;
 import up.edu.isgc.raytracer.Vector3D;
-
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 public class Triangle implements ICollide {
 
     public static final double EPSILON = 0.000000001;

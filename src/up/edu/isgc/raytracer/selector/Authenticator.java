@@ -1,8 +1,15 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer.selector;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 public class Authenticator {
     /**
      * here check that it does not put any character

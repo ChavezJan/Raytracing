@@ -1,3 +1,7 @@
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
 package up.edu.isgc.raytracer;
 
 import up.edu.isgc.raytracer.objects.*;
@@ -9,31 +13,64 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
+/**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
+ */
 public class Raytracer {
 
     /**
      * Generate the Scenes adding the Objects
-     *
      * Saved the Image "image.png"
-     * @param object
-     * @param triangle
-     * @param Triangle
+     *
+     * @param Files -> all the files that the user choose
+     * @throws IOException
      */
-
-    public static void initialRaytracer(Triangle[] Triangle) {
-
+    public static void initialRaytracer(File[] Files) throws IOException {
+        Scanner scan = new Scanner(System.in);
         Scene scene01 = new Scene();
+        int color;
+        int cont = -4;
+        for (int i = 0 ; i < Files.length; i++){
+            System.out.println("Choose a color for your object");
+            System.out.println("Object Name -> " + Files[i].getName());
+            System.out.println("1 -> RED \n2 -> BLUE \n3 -> PINK \n4 -> ORANGE \n5 -> GREEN \n6 -> MAGENTA");
+
+            color = scan.nextInt();
+
+            if(color == 1){
+                // Polygon - Triangle - Object
+                scene01.addObject(new Polygons(new Vector3D(cont,cont,0), PolygonsCreator.FacesAndVectorsOrganizer(Files, i), Color.RED));
+            }else if(color == 2){
+                // Polygon - Triangle - Object
+                scene01.addObject(new Polygons(new Vector3D(cont,cont,0), PolygonsCreator.FacesAndVectorsOrganizer(Files, i), Color.BLUE));
+            }else if(color == 3){
+                // Polygon - Triangle - Object
+                scene01.addObject(new Polygons(new Vector3D(cont,cont,0), PolygonsCreator.FacesAndVectorsOrganizer(Files, i), Color.PINK));
+            }else if(color == 4){
+                // Polygon - Triangle - Object
+                scene01.addObject(new Polygons(new Vector3D(cont,cont,0), PolygonsCreator.FacesAndVectorsOrganizer(Files, i), Color.ORANGE));
+            }else if(color == 5){
+                // Polygon - Triangle - Object
+                scene01.addObject(new Polygons(new Vector3D(cont,cont,0), PolygonsCreator.FacesAndVectorsOrganizer(Files, i), Color.GREEN));
+            }else if(color == 6){
+                // Polygon - Triangle - Object
+                scene01.addObject(new Polygons(new Vector3D(cont,cont,0), PolygonsCreator.FacesAndVectorsOrganizer(Files, i), Color.MAGENTA));
+            }
 
 
+            cont = cont + 2;
+        }
 
-        scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 1000, 1000 , .7f, 50f));
+        scene01.setCamera(new Camera(new Vector3D(0, 0, -10), 160, 160, 1000, 1000 , -5.7f, 50f));
         // Sphere
-        //scene01.addObject(new Sphere(new Vector3D(.5, -.5, 7.5), 0.5f, Color.GREEN));
-        //scene01.addObject(new Sphere(new Vector3D(-.5, .5, 5), 0.5f, Color.WHITE));
-        // Polygon - Triangle - Object
-        scene01.addObject(new Polygons(new Vector3D(0,0,0), Triangle , Color.RED));
+        scene01.addObject(new Sphere(new Vector3D(-8, -8, 5), 0.5f, Color.GREEN));
+        scene01.addObject(new Sphere(new Vector3D(8, 8, 5), 0.5f, Color.WHITE));
+
+        //scene01.addObject(new Polygons(new Vector3D(0,0,0), Triangle , Color.RED));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
