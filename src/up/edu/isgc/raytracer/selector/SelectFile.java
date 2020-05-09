@@ -20,9 +20,8 @@ public class SelectFile {
     /**
      * This class is made to make the user to choose the Objects for the project
      * @throws IOException
-     * @throws DataFormatException
      */
-    public static void selectFiles() throws IOException, DataFormatException {
+    public static void selectFiles() throws IOException {
 
         int options = 2, menu = 0;
 

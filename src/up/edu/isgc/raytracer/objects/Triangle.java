@@ -59,7 +59,25 @@ public class Triangle implements ICollide {
     }
 
     public Vector3D getNormal(){
-        return Vector3D.ZERO();
+        Vector3D normal = Vector3D.ZERO();
+
+        Vector3D[] normals = this.normals;
+        if (normals == null) {
+            Vector3D[] vertices = getVertices();
+            Vector3D v = Vector3D.substract(vertices[1], vertices[0]);
+            Vector3D w = Vector3D.substract(vertices[2], vertices[0]);
+
+            normal = Vector3D.scalarMultiplication(Vector3D.normalize(Vector3D.crossProduct(v, w)), -1.0);
+        } else {
+            for (int i = 0; i < normals.length; i++) {
+                normal.setX(normal.getX() + normals[i].getX());
+                normal.setY(normal.getY() + normals[i].getY());
+                normal.setZ(normal.getZ() + normals[i].getZ());
+                //normal = Vector3D.normalize(normal);
+            }
+        }
+
+        return normal;
     }
 
     public void setNormals(Vector3D[] normals) {

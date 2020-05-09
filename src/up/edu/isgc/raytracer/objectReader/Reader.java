@@ -4,12 +4,14 @@
  */
 package up.edu.isgc.raytracer.objectReader;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import up.edu.isgc.raytracer.Vector3D;
+import up.edu.isgc.raytracer.objects.Triangle;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author ChavezJan
@@ -22,28 +24,20 @@ public class Reader {
      *
      * @param File -> the object file that we will use
      * @param vector -> list of all the Vectors
-     * @param normal -> list of all the normals
      * @param faces -> List of the position of the face
-     * @param i Number of the File
      * @throws IOException
      */
-    public static void objectReader(File[] File, List<String> vector, List<String> normal, List<String> faces, int i) throws IOException {
+    public static void objectReader(File File, List<String> vector, List<String> faces) throws IOException {
 
         String line;
         List<String> Text = new ArrayList<>();
 
-
-        File file = new File(File[i].getAbsolutePath());
-        BufferedReader br = new BufferedReader(new FileReader(file));
+        BufferedReader br = new BufferedReader(new FileReader(File.getAbsolutePath()));
 
         while ((line = br.readLine()) != null){
             if (line.startsWith("v ")){
 
                 vector.add(line + "#");
-
-            }else if (line.startsWith("vn ")){
-
-                normal.add(line + "#");
 
             }else if (line.startsWith("f ")){
 
@@ -52,5 +46,6 @@ public class Reader {
             }
         }
     }
+
 }
 

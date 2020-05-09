@@ -20,17 +20,15 @@ public class PolygonsCreator {
      * Calls the necessary functions to accommodate the vectors, faces, and create the triangles
      *
      * @param Files
-     * @param i -> Number of the File
      * @return The Triangles array
      * @throws IOException
      */
-    public static Triangle[] FacesAndVectorsOrganizer(File[] Files, int i) throws IOException {
+    public static Triangle[] FacesAndVectorsOrganizer(File Files) throws IOException {
 
         List<String> Vector = new ArrayList<>();
-        List<String> Normal = new ArrayList<>();
         List<String> Faces = new ArrayList<>();
 
-        Reader.objectReader(Files, Vector, Normal, Faces, i);
+        Reader.objectReader(Files, Vector, Faces);
 
         List<String> VectorOfTheFaces = new ArrayList<>();
         List<Triangle> triangle = new ArrayList<>();
@@ -74,7 +72,7 @@ public class PolygonsCreator {
                 String[] Vector2 = FaceOrder[2].split("/");
                 String[] Vector3 = FaceOrder[3].split("/");
 
-                VectorOfTheFaces.add(Vector1[0] + " " + Vector2[0] + " " + Vector3[0]);
+                VectorOfTheFaces.add(Vector2[0] + " " + Vector1[0] + " " + Vector3[0]);
 
             }else if(size == 5){
 
@@ -83,8 +81,8 @@ public class PolygonsCreator {
                 String[] Vector3 = FaceOrder[3].split("/");
                 String[] Vector4 = FaceOrder[4].split("/");
 
-                VectorOfTheFaces.add(Vector1[0] + " " + Vector2[0] + " " + Vector4[0]);
-                VectorOfTheFaces.add(Vector2[0] + " " + Vector3[0] + " " + Vector4[0]);
+                VectorOfTheFaces.add(Vector2[0] + " " + Vector1[0] + " " + Vector3[0]);
+                VectorOfTheFaces.add(Vector3[0] + " " + Vector1[0] + " " + Vector4[0]);
 
             }else System.out.println("System Error");
 

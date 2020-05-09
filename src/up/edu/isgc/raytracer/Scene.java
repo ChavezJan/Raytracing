@@ -4,6 +4,7 @@
  */
 package up.edu.isgc.raytracer;
 
+import up.edu.isgc.raytracer.lights.Light;
 import up.edu.isgc.raytracer.objects.Camera;
 import up.edu.isgc.raytracer.objects.Object3D;
 
@@ -17,6 +18,8 @@ public class Scene {
 
     private Camera camera;
     private ArrayList<Object3D> objects;
+    private ArrayList<Light> lights;
+
 
     /**
      * It is the constructor of Scene
@@ -24,6 +27,8 @@ public class Scene {
 
     public Scene(){
         setObjects(new ArrayList<Object3D>());
+        setLights(new ArrayList<Light>());
+
     }
 
     /**
@@ -53,4 +58,17 @@ public class Scene {
     public void setObjects(ArrayList<Object3D> objects) {
         this.objects = objects;
     }
+
+    public ArrayList<Light> getLights() {
+        return lights;
+    }
+
+    public void setLights(ArrayList<Light> lights) {
+        this.lights = lights;
+    }
+
+    public void addLight(Light light){
+        getLights().add(light);
+    }
+
 }
