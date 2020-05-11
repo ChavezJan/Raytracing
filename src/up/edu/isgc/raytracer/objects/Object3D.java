@@ -3,16 +3,14 @@
  * All Rights Reserved.
  */
 package up.edu.isgc.raytracer.objects;
-/**
- * @author ChavezJan
- * @author Jafet Rodríguez
- */
+
 import up.edu.isgc.raytracer.usedInterface.ICollide;
 import up.edu.isgc.raytracer.Vector3D;
 
 import java.awt.*;
-
 /**
+ * @author ChavezJan
+ * @author Jafet Rodríguez
  *  Its the base for all the object
  */
 

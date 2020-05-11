@@ -18,10 +18,19 @@ import java.awt.*;
 public abstract class Light extends Object3D {
     private double intensity;
 
+    /**
+     * It is the constructor of the Light
+     *
+     * @param position
+     * @param color
+     * @param intensity
+     */
     public Light(Vector3D position, Color color, double intensity){
         super(position, color);
         setIntensity(intensity);
     }
+
+    // Getters and Setters
 
     public double getIntensity() {
         return intensity;
@@ -33,6 +42,12 @@ public abstract class Light extends Object3D {
 
     public abstract float getNDotL(Intersection intersection);
 
+    /**
+     * Gets the intersection of the light and the Object
+     *
+     * @param ray
+     * @return new Intersection
+     */
     public Intersection getIntersection(Ray ray){
         return new Intersection(Vector3D.ZERO(), -1, Vector3D.ZERO(), null);
     }

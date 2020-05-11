@@ -46,6 +46,10 @@ public class Raytracer {
         scene01.addObject(new Sphere(new Vector3D(4, 3, 1), 0.5f, Color.MAGENTA));
         scene01.addObject(new Sphere(new Vector3D(-5, -2, 0), 0.5f, Color.YELLOW));
 
+        /**
+         * You could choose diferent colors for the object
+         */
+
         for (int i = 0 ; i < Files.length; i++){
             System.out.println("Choose a color for your object");
             System.out.println("Object Name -> " + Files[i].getName());
@@ -140,6 +144,14 @@ public class Raytracer {
         return image;
     }
 
+    /**
+     * prevents values from being greater than maximum or less than minimum
+     *
+     * @param value
+     * @param min
+     * @param max
+     * @return value between maximum or minimum
+     */
     public static float clamp(float value, float min, float max) {
         if (value < min) {
             return min;
@@ -150,6 +162,13 @@ public class Raytracer {
         return value;
     }
 
+    /**
+     * use the blur to get the exact color according to the reflection of the normal
+     *
+     * @param original
+     * @param otherColor
+     * @return The color to use
+     */
     public static Color addColor(Color original, Color otherColor){
         float red = clamp((original.getRed() / 255.0f) + (otherColor.getRed() / 255.0f), 0, 1);
         float green = clamp((original.getGreen() / 255.0f) + (otherColor.getGreen() / 255.0f), 0, 1);

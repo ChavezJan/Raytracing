@@ -28,7 +28,7 @@ public class SelectFile {
         JFileChooser selector = new JFileChooser();
         JFrame parentFrame = new JFrame();
 
-        System.out.println("Choose the objects you want to use for the Raytracer\n");
+        System.out.println("Choose the objects you want to use for the Raytracer\nYou can choose multiple objects");
 
         chooserConf(selector, parentFrame);
         File[] Files = askForTheOBJ(selector, parentFrame);

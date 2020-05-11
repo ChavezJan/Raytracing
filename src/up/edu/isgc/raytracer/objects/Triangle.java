@@ -58,6 +58,11 @@ public class Triangle implements ICollide {
         return normals;
     }
 
+    /**
+     * Calculate the normal of the Triangles
+     *
+     * @return the normal of the Triangle
+     */
     public Vector3D getNormal(){
         Vector3D normal = Vector3D.ZERO();
 
