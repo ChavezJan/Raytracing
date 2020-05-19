@@ -6,6 +6,7 @@ package up.edu.isgc.raytracer;
 
 import up.edu.isgc.raytracer.lights.DirectionalLight;
 import up.edu.isgc.raytracer.lights.Light;
+import up.edu.isgc.raytracer.lights.PointLight;
 import up.edu.isgc.raytracer.objectReader.Reader;
 import up.edu.isgc.raytracer.objects.*;
 
@@ -16,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
+
 import java.util.Scanner;
 
 /**
@@ -39,7 +40,8 @@ public class Raytracer {
         int cont = -4;
 
         scene01.setCamera(new Camera(new Vector3D(0, 0, -10), 160, 160, 1000, 1000 , -5.7f, 50f));
-        scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(-1.0, -1.0, 1.0), Color.WHITE, 1.1));
+        scene01.addLight(new PointLight(new Vector3D(0f, 1f, 0f), Color.WHITE, 1.8));
+        //scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(-1.0, -1.0, 1.0), Color.WHITE, 1.1));
         // Sphere
         scene01.addObject(new Sphere(new Vector3D(-8, -8, 5), 0.5f, Color.GREEN));
         scene01.addObject(new Sphere(new Vector3D(8, 8, 5), 0.5f, Color.PINK));
@@ -57,26 +59,28 @@ public class Raytracer {
 
             color = scan.nextInt();
 
+            String path = Files[i].getAbsolutePath();
+
             if(color == 1){
                 // Polygon - Triangle - Object
-                scene01.addObject(new Polygons(new Vector3D(cont,cont,0), PolygonsCreator.FacesAndVectorsOrganizer(Files[i]), Color.RED));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.RED));
             }else if(color == 2){
                 // Polygon - Triangle - Object
-                scene01.addObject(new Polygons(new Vector3D(cont,cont,0), PolygonsCreator.FacesAndVectorsOrganizer(Files[i]), Color.BLUE));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.BLUE));
             }else if(color == 3){
                 // Polygon - Triangle - Object
-                scene01.addObject(new Polygons(new Vector3D(cont,cont,0),  PolygonsCreator.FacesAndVectorsOrganizer(Files[i]), Color.PINK));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.PINK));
             }else if(color == 4){
                 // Polygon - Triangle - Object
-                scene01.addObject(new Polygons(new Vector3D(cont,cont,0),  PolygonsCreator.FacesAndVectorsOrganizer(Files[i]), Color.ORANGE));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.ORANGE));
             }else if(color == 5){
                 // Polygon - Triangle - Object
-                scene01.addObject(new Polygons(new Vector3D(cont,cont,0),  PolygonsCreator.FacesAndVectorsOrganizer(Files[i]), Color.GREEN));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.GREEN));
             }else if(color == 6){
                 // Polygon - Triangle - Object
-                scene01.addObject(new Polygons(new Vector3D(cont,cont,0),  PolygonsCreator.FacesAndVectorsOrganizer(Files[i]), Color.MAGENTA));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.MAGENTA));
             }else{
-                scene01.addObject(new Polygons(new Vector3D(cont,cont,0),  PolygonsCreator.FacesAndVectorsOrganizer(Files[i]), Color.YELLOW));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.YELLOW));
             }
             cont = cont + 2;
         }

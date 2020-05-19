@@ -10,6 +10,7 @@ package up.edu.isgc.raytracer.objects;
 import up.edu.isgc.raytracer.Intersection;
 import up.edu.isgc.raytracer.Ray;
 import up.edu.isgc.raytracer.Vector3D;
+import up.edu.isgc.raytracer.tools.Barycentric;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -73,6 +74,12 @@ public class Polygons extends Object3D{
                 distance = intersectionDistance;
                 position = Vector3D.add(ray.getOrigin(), Vector3D.scalarMultiplication(ray.getDirection(), distance));
                 normal = triangle.getNormal();
+                normal = Vector3D.ZERO();
+                double[] uVw = Barycentric.CalculateBarycentricCoordinates(position, triangle);
+                Vector3D[] normals = triangle.getNormals();
+                for(int i = 0; i < uVw.length; i++) {
+                    normal = Vector3D.add(normal, Vector3D.scalarMultiplication(normals[i], uVw[i]));
+                }
             }
         }
 

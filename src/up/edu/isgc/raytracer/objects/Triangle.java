@@ -31,6 +31,20 @@ public class Triangle implements ICollide {
         setNormals(null);
     }
 
+    public Triangle(Vector3D vertex1, Vector3D vertex2, Vector3D vertex3, Vector3D normal1, Vector3D normal2, Vector3D normal3) {
+        this(vertex1, vertex2, vertex3);
+        setNormals(normal1, normal2, normal3);
+    }
+
+    public Triangle(Vector3D[] vertices, Vector3D[] normal) {
+        if (vertices.length == 3) {
+            setVertices(vertices[0], vertices[1], vertices[2]);
+        } else {
+            setVertices(Vector3D.ZERO(), Vector3D.ZERO(), Vector3D.ZERO());
+        }
+        setNormals(normal);
+    }
+
     // Getter and Setter
 
     public Vector3D[] getVertices() {
@@ -55,6 +69,10 @@ public class Triangle implements ICollide {
     }
 
     public Vector3D[] getNormals() {
+        if(normals == null){
+            Vector3D normal = getNormal();
+            setNormals(new Vector3D[]{normal, normal, normal});
+        }
         return normals;
     }
 
@@ -63,7 +81,7 @@ public class Triangle implements ICollide {
      *
      * @return the normal of the Triangle
      */
-    public Vector3D getNormal(){
+    public Vector3D getNormal() {
         Vector3D normal = Vector3D.ZERO();
 
         Vector3D[] normals = this.normals;
@@ -74,12 +92,14 @@ public class Triangle implements ICollide {
 
             normal = Vector3D.scalarMultiplication(Vector3D.normalize(Vector3D.crossProduct(v, w)), -1.0);
         } else {
-            for (int i = 0; i < normals.length; i++) {
+            for(int i = 0; i < normals.length; i++){
                 normal.setX(normal.getX() + normals[i].getX());
                 normal.setY(normal.getY() + normals[i].getY());
                 normal.setZ(normal.getZ() + normals[i].getZ());
-                //normal = Vector3D.normalize(normal);
             }
+            normal.setX(normal.getX() / normals.length);
+            normal.setY(normal.getY() / normals.length);
+            normal.setZ(normal.getZ() / normals.length);
         }
 
         return normal;
@@ -87,6 +107,11 @@ public class Triangle implements ICollide {
 
     public void setNormals(Vector3D[] normals) {
         this.normals = normals;
+    }
+
+    public void setNormals(Vector3D normal1, Vector3D normal2, Vector3D normal3) {
+        Vector3D[] normals = new Vector3D[]{normal1, normal2, normal3};
+        setNormals(normals);
     }
 
     /**
@@ -122,5 +147,4 @@ public class Triangle implements ICollide {
 
         return intersection;
     }
-
 }
