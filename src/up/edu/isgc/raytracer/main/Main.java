@@ -4,7 +4,7 @@
  */
 package up.edu.isgc.raytracer.main;
 
-import up.edu.isgc.raytracer.selector.SelectFile;
+import up.edu.isgc.raytracer.tools.SelectFile;
 
 import java.io.IOException;
 import java.util.Date;

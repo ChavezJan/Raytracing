@@ -2,7 +2,7 @@
  * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
  * All Rights Reserved.
  */
-package up.edu.isgc.raytracer.selector;
+package up.edu.isgc.raytracer.tools;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

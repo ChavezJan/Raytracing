@@ -37,10 +37,10 @@ public class Raytracer {
         Scanner scan = new Scanner(System.in);
         Scene scene01 = new Scene();
         int color;
-        int cont = -4;
+        int cont = -5;
 
         scene01.setCamera(new Camera(new Vector3D(0, 0, -10), 160, 160, 1000, 1000 , -5.7f, 50f));
-        scene01.addLight(new PointLight(new Vector3D(0f, 1f, 0f), Color.WHITE, 1.8));
+        scene01.addLight(new PointLight(new Vector3D(0f, 2f, -3f), Color.WHITE, 10));
         //scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(-1.0, -1.0, 1.0), Color.WHITE, 1.1));
         // Sphere
         scene01.addObject(new Sphere(new Vector3D(-8, -8, 5), 0.5f, Color.GREEN));
@@ -55,37 +55,32 @@ public class Raytracer {
         for (int i = 0 ; i < Files.length; i++){
             System.out.println("Choose a color for your object");
             System.out.println("Object Name -> " + Files[i].getName());
-            System.out.println("1 -> RED \n2 -> BLUE \n3 -> PINK \n4 -> ORANGE \n5 -> GREEN \n6 -> MAGENTA");
+            System.out.println("1 -> RED \n2 -> BLUE \n3 -> PINK \n4 -> ORANGE \n5 -> GREEN \n6 -> MAGENTA\nAny other number it will be Yellow");
 
             color = scan.nextInt();
-
             String path = Files[i].getAbsolutePath();
 
+            // Polygon - Triangle - Object
             if(color == 1){
-                // Polygon - Triangle - Object
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.RED));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-1,0),Color.RED));
             }else if(color == 2){
-                // Polygon - Triangle - Object
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.BLUE));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-1,0),Color.BLUE));
             }else if(color == 3){
-                // Polygon - Triangle - Object
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.PINK));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-1,0),Color.PINK));
             }else if(color == 4){
-                // Polygon - Triangle - Object
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.ORANGE));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-1,0),Color.ORANGE));
             }else if(color == 5){
-                // Polygon - Triangle - Object
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.GREEN));
-            }else if(color == 6){
-                // Polygon - Triangle - Object
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.MAGENTA));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-1,0),Color.GREEN));
+            }else if(color == 6) {
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont, -1, 0), Color.MAGENTA));
             }else{
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,cont,0),Color.YELLOW));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-1,0),Color.YELLOW));
             }
-            cont = cont + 2;
+            cont = cont + 3;
         }
+            scene01.addObject(Reader.GetPolygon("ground.obj", new Vector3D(0,-4,0),Color.WHITE));
 
-        //scene01.addObject(new Polygons(new Vector3D(0,0,0), Triangle , Color.RED));
+
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
@@ -128,6 +123,9 @@ public class Raytracer {
                 if (closestIntersection != null) {
                     pixelColor = Color.BLACK;
                     for (Light light : lights) {
+
+                        double distance = Vector3D.magnitude(Vector3D.substract(closestIntersection.getPosition(), light.getPosition()));
+
                         float nDotL = light.getNDotL(closestIntersection);
                         float intensity = (float) light.getIntensity() * nDotL;
                         Color lightColor = light.getColor();
@@ -135,7 +133,7 @@ public class Raytracer {
                         float[] lightColors = new float[]{lightColor.getRed() / 255.0f, lightColor.getGreen() / 255.0f, lightColor.getBlue() / 255.0f};
                         float[] objColors = new float[]{objColor.getRed() / 255.0f, objColor.getGreen() / 255.0f, objColor.getBlue() / 255.0f};
                         for (int colorIndex = 0; colorIndex < objColors.length; colorIndex++) {
-                            objColors[colorIndex] *= intensity * lightColors[colorIndex];
+                            objColors[colorIndex] *= (intensity/ (Math.pow(distance, 2))) * lightColors[colorIndex];
                         }
                         Color diffuse = new Color(clamp(objColors[0], 0, 1),clamp(objColors[1], 0, 1),clamp(objColors[2], 0, 1));
                         pixelColor = addColor(pixelColor, diffuse);

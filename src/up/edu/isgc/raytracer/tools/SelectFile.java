@@ -2,16 +2,16 @@
  * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
  * All Rights Reserved.
  */
-package up.edu.isgc.raytracer.selector;
+package up.edu.isgc.raytracer.tools;
 
 import up.edu.isgc.raytracer.Raytracer;
-import up.edu.isgc.raytracer.objectReader.Reader;
+import up.edu.isgc.raytracer.tools.Authenticator;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
-import java.util.zip.DataFormatException;
+
 /**
  * @author ChavezJan
  * @author Jafet Rodríguez

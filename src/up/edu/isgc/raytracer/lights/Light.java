@@ -36,6 +36,11 @@ public abstract class Light extends Object3D {
         return intensity;
     }
 
+    public double getIntensity(Vector3D lightPosition, Vector3D objectPosition) {
+        double distance = Math.sqrt((objectPosition.getX() - lightPosition.getX()) + (objectPosition.getY() - lightPosition.getY()) + (objectPosition.getZ() - lightPosition.getZ()));
+        return (intensity/(Math.pow(distance, 2)));
+    }
+
     public void setIntensity(double intensity) {
         this.intensity = intensity;
     }

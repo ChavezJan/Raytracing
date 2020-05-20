@@ -8,8 +8,6 @@ import up.edu.isgc.raytracer.Vector3D;
 import up.edu.isgc.raytracer.objects.Polygons;
 import up.edu.isgc.raytracer.objects.Triangle;
 
-import java.awt.*;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,34 +26,13 @@ import java.io.IOException;
  * @author Jafet Rodríguez
  */
 public class Reader {
-
     /**
-     * Read the file and save and send it to extract the vectors and faces we need
      *
-     * @param path -> the object path that we will use
-     * @param vector -> list of all the Vectors
-     * @param faces -> List of the position of the face
-     * @throws IOException
+     * @param path
+     * @param origin
+     * @param color
+     * @return
      */
-    public static void objectReader(File path, List<String> vector, List<String> faces) throws IOException {
-
-        String line;
-        List<String> Text = new ArrayList<>();
-
-        BufferedReader br = new BufferedReader(new FileReader(path.getAbsolutePath()));
-
-        while ((line = br.readLine()) != null){
-            if (line.startsWith("v ")){
-
-                vector.add(line + "#");
-
-            }else if (line.startsWith("f ")){
-
-                faces.add(line + "#");
-
-            }
-        }
-    }
     public static Polygons GetPolygon(String path, Vector3D origin, Color color) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
