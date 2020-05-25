@@ -42,7 +42,7 @@ public class Camera extends Object3D {
      */
 
     public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution, int heightResolution, float nearPlane, float farPlane) {
-        super(position, Color.black, 0,0,0);
+        super(position, Color.black, 0,0,0,0);
         setFieldOfViewHorizontal(fieldOfViewHorizontal);
         setFieldOfViewVertical(fieldOfViewVertical);
         setResolution(new int[]{widthResolution, heightResolution});

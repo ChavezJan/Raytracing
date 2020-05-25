@@ -21,6 +21,7 @@ public abstract class Object3D implements ICollide {
     private float Ambient;
     private float specular;
     private float shininess;
+    private float diffuse;
     private float reflection;
     private float refraction;
 
@@ -86,6 +87,14 @@ public abstract class Object3D implements ICollide {
         this.refraction = refraction;
     }
 
+    public float getDiffuse() {
+        return diffuse;
+    }
+
+    public void setDiffuse(float diffuse) {
+        this.diffuse = diffuse;
+    }
+
     /**
      * It is the constructor of Object3D
      *
@@ -93,12 +102,13 @@ public abstract class Object3D implements ICollide {
      * @param color
      */
 
-    public Object3D(Vector3D position, Color color, float ambient, float shininess ,float specular) {
+    public Object3D(Vector3D position, Color color, float ambient, float shininess ,float specular,float diffuse) {
         setPosition(position);
         setColor(color);
         setAmbient(ambient);
         setShininess(shininess);
         setSpecular(specular);
+        setDiffuse(diffuse);
     }
 
 
