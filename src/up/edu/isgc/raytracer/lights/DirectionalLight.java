@@ -25,7 +25,7 @@ public class DirectionalLight extends Light {
      * @param intensity
      */
     public DirectionalLight(Vector3D position, Vector3D direction, Color color, double intensity){
-        super(position, color, intensity);
+        super(position, color, intensity,0,0,0);
         setDirection(Vector3D.normalize(direction));
     }
 

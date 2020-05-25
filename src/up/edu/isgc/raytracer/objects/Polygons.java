@@ -35,8 +35,8 @@ public class Polygons extends Object3D{
      * @param triangles
      * @param color
      */
-    public Polygons(Vector3D position, Triangle[] triangles, Color color){
-        super(position, color);
+    public Polygons(Vector3D position, Triangle[] triangles, Color color, float ambient, float shininess, float specular){
+        super(position, color, ambient, shininess, specular);
         setTriangles(triangles);
     }
 
@@ -87,6 +87,6 @@ public class Polygons extends Object3D{
             return null;
         }
 
-        return new Intersection(position, distance, normal, this);
+        return new Intersection(position, distance, normal, this, null);
     }
 }

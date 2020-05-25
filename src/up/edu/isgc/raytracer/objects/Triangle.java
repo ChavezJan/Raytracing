@@ -122,7 +122,7 @@ public class Triangle implements ICollide {
      */
     @Override
     public Intersection getIntersection(Ray ray) {
-        Intersection intersection = new Intersection(null, -1, null, null);
+        Intersection intersection = new Intersection(null, -1, null, null, null);
 
         Vector3D[] vertices = getVertices();
         Vector3D v2v0 = Vector3D.substract(vertices[2], vertices[0]);

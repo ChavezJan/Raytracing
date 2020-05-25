@@ -42,7 +42,7 @@ public class Camera extends Object3D {
      */
 
     public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution, int heightResolution, float nearPlane, float farPlane) {
-        super(position, Color.black);
+        super(position, Color.black, 0,0,0);
         setFieldOfViewHorizontal(fieldOfViewHorizontal);
         setFieldOfViewVertical(fieldOfViewVertical);
         setResolution(new int[]{widthResolution, heightResolution});
@@ -142,6 +142,6 @@ public class Camera extends Object3D {
 
     @Override
     public Intersection getIntersection(Ray ray) {
-        return new Intersection(Vector3D.ZERO(), -1, Vector3D.ZERO(), null);
+        return new Intersection(Vector3D.ZERO(), -1, Vector3D.ZERO(), null,null);
     }
 }

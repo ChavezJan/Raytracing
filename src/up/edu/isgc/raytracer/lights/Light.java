@@ -25,8 +25,8 @@ public abstract class Light extends Object3D {
      * @param color
      * @param intensity
      */
-    public Light(Vector3D position, Color color, double intensity){
-        super(position, color);
+    public Light(Vector3D position, Color color, double intensity, float ambient, float shininess, float specular){
+        super(position, color,ambient,shininess,specular);
         setIntensity(intensity);
     }
 
@@ -54,6 +54,6 @@ public abstract class Light extends Object3D {
      * @return new Intersection
      */
     public Intersection getIntersection(Ray ray){
-        return new Intersection(Vector3D.ZERO(), -1, Vector3D.ZERO(), null);
+        return new Intersection(Vector3D.ZERO(), -1, Vector3D.ZERO(), null,null);
     }
 }
