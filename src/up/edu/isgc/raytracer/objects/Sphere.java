@@ -38,8 +38,8 @@ public class Sphere extends Object3D {
      * @param radius
      * @param color
      */
-    public Sphere(Vector3D position, float radius, Color color, float ambient, float shininess ,float specular, float diffuse) {
-        super(position, color,ambient,shininess,specular, diffuse);
+    public Sphere(Vector3D position, float radius, Color color, float ambient, float shininess ,float specular, float diffuse, float reflection, float refraction) {
+        super(position, color,ambient,shininess,specular, diffuse, reflection, refraction);
         setRadius(radius);
     }
 

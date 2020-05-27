@@ -35,8 +35,8 @@ public class Polygons extends Object3D{
      * @param triangles
      * @param color
      */
-    public Polygons(Vector3D position, Triangle[] triangles, Color color, float ambient, float shininess, float specular, float diffuse){
-        super(position, color, ambient, shininess, specular,diffuse);
+    public Polygons(Vector3D position, Triangle[] triangles, Color color, float ambient, float shininess, float specular, float diffuse, float reflection, float refraction){
+        super(position, color, ambient, shininess, specular,diffuse, reflection, refraction);
         setTriangles(triangles);
     }
 

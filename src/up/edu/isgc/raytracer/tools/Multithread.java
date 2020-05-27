@@ -53,7 +53,7 @@ public class Multithread {
                         if (closestIntersection.getObject().getRefraction() > 0){
                             pixelColor = Raytracer.addColor(pixelColor, Raytracer.calculateRefraction(closestIntersection, light, objects, mainCamera, nearFarPlanes));
                         }
-
+//___________________________________________________________
                         double distance = Vector3D.magnitude(Vector3D.substract(closestIntersection.getPosition(), light.getPosition()));
 
                         float nDotL = light.getNDotL(closestIntersection);

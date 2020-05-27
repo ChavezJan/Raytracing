@@ -33,7 +33,7 @@ public class Reader {
      * @param color
      * @return
      */
-    public static Polygons GetPolygon(String path, Vector3D origin, Color color, float ambient, float shininess ,float specular, float diffuse) {
+    public static Polygons GetPolygon(String path, Vector3D origin, Color color, float ambient, float shininess ,float specular, float diffuse, float reflection, float refraction) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
 
@@ -172,7 +172,7 @@ public class Reader {
                 }
             }
 
-            return new Polygons(origin, triangles.toArray(new Triangle[triangles.size()]), color ,ambient ,shininess ,specular, diffuse);
+            return new Polygons(origin, triangles.toArray(new Triangle[triangles.size()]), color ,ambient ,shininess ,specular, diffuse, reflection, refraction);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Reader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

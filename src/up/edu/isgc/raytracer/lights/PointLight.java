@@ -14,8 +14,8 @@ import java.awt.*;
  * @author Jafet Rodríguez
  */
 public class PointLight extends Light {
-    public PointLight(Vector3D position, Color color, double intensity, float ambient, float shininess, float specular, float diffuse) {
-        super(position, color, intensity, ambient,shininess,specular, diffuse);
+    public PointLight(Vector3D position, Color color, double intensity, float ambient, float shininess, float specular, float diffuse, float reflection, float refraction) {
+        super(position, color, intensity, ambient,shininess,specular, diffuse, reflection, refraction);
     }
 
     @Override

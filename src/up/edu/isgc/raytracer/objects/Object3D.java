@@ -102,13 +102,15 @@ public abstract class Object3D implements ICollide {
      * @param color
      */
 
-    public Object3D(Vector3D position, Color color, float ambient, float shininess ,float specular,float diffuse) {
+    public Object3D(Vector3D position, Color color, float ambient, float shininess ,float specular,float diffuse, float reflection, float refraction) {
         setPosition(position);
         setColor(color);
         setAmbient(ambient);
         setShininess(shininess);
         setSpecular(specular);
         setDiffuse(diffuse);
+        setReflection(reflection);
+        setRefraction(refraction);
     }
 
 
