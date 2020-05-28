@@ -54,6 +54,7 @@ public class Multithread {
                             pixelColor = Raytracer.addColor(pixelColor, Raytracer.calculateRefraction(closestIntersection, light, objects, mainCamera, nearFarPlanes));
                         }
 //___________________________________________________________
+                        /*
                         double distance = Vector3D.magnitude(Vector3D.substract(closestIntersection.getPosition(), light.getPosition()));
 
                         float nDotL = light.getNDotL(closestIntersection);
@@ -67,6 +68,7 @@ public class Multithread {
                         }
                         Color diffuse = new Color(Raytracer.clamp(objColors[0], 0, 1), Raytracer.clamp(objColors[1], 0, 1), Raytracer.clamp(objColors[2], 0, 1));
                         pixelColor = Raytracer.addColor(pixelColor, diffuse);
+                         */
                     }
                 }
                 setRGB(image,i,j,pixelColor);
@@ -84,5 +86,5 @@ public class Multithread {
      * @param pixelColor
      */
     public static synchronized void setRGB(BufferedImage image, int i, int j, Color pixelColor) {
-        image.setRGB(i, j, pixelColor.getRGB());    }
+        image.setRGB(i, j, pixelColor.getRGB());}
 }

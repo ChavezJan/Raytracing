@@ -33,7 +33,7 @@ public class Reader {
      * @param color
      * @return
      */
-    public static Polygons GetPolygon(String path, Vector3D origin, Color color, float ambient, float shininess ,float specular, float diffuse, float reflection, float refraction) {
+    public static Polygons GetPolygon(String path, Vector3D origin, Color color, float ambient, float shininess ,float specular, float diffuse, float reflection, float refraction, double Scale, int Rotate) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
 
@@ -52,10 +52,31 @@ public class Reader {
                         double x = Double.parseDouble(vertexComponents[1]);
                         double y = Double.parseDouble(vertexComponents[2]);
                         double z = Double.parseDouble(vertexComponents[3]);
-                        if (line.startsWith("v ")) {
-                            vertices.add(new Vector3D(x, y, z));
-                        } else {
-                            normals.add(new Vector3D(x, y, z));
+
+
+                        //Scale
+                        x *= (Scale);
+                        y *= (Scale);
+                        z *= (Scale);
+
+                        if(Rotate == 0) {
+                            if (line.startsWith("v ")) {
+                                vertices.add(new Vector3D(x, y, z));
+                            } else {
+                                normals.add(new Vector3D(x, y, z));
+                            }
+                        }else if(Rotate == 1) {
+                            if (line.startsWith("v ")) {
+                                vertices.add(new Vector3D(y, z, x));
+                            } else {
+                                normals.add(new Vector3D(y, z, x));
+                            }
+                        }else if (Rotate == 2){
+                            if (line.startsWith("v ")) {
+                                vertices.add(new Vector3D( z,y, x));
+                            } else {
+                                normals.add(new Vector3D(  z,y, x));
+                            }
                         }
                     }
                 } else if (line.startsWith("f ")) {

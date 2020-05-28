@@ -54,7 +54,6 @@ public abstract class Object3D implements ICollide {
         Ambient = ambient;
     }
 
-
     public float getSpecular() {
         return specular;
     }
