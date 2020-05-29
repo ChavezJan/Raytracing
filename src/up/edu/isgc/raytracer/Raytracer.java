@@ -45,9 +45,9 @@ public class Raytracer {
         double Scale;
         float cont = -4;
 
-        scene01.setCamera(new Camera(new Vector3D(0, 0, -10), 160, 160, 1200, 1200 , -5.7f, 50f));
+        scene01.setCamera(new Camera(new Vector3D(0, 0, -10), 160, 160, 2000, 2000 , -5.7f, 50f));
         scene01.addLight(new PointLight(new Vector3D(2f, 2f, -2f), Color.WHITE,5,.2f, .2f,.1f,1,0,0));
-        scene01.addLight(new PointLight(new Vector3D(-2f, 2f, 2f), Color.WHITE,5,.2f, .2f,.1f,1,0,0));
+        scene01.addLight(new PointLight(new Vector3D(-2f, 2f, -2f), Color.WHITE,5,.2f, .2f,.1f,1,0,0));
 
         //scene01.addLight(new PointLight(new Vector3D(-4f, 2f, -3f), Color.WHITE,1,.2f, 20f,3.1f,1));
         //scene01.addLight(new PointLight(new Vector3D(4f, 2f, -3f), Color.WHITE,1,.2f, 20f,3.1f,1));
@@ -56,16 +56,19 @@ public class Raytracer {
         // Sphere
         scene01.addObject(new Sphere(new Vector3D(0, 2, 0), 0.5f, new Color(250,50,65),.1f,10.5f,20.5f, 2,.0f,0.0f));
 
-        scene01.addObject(new Sphere(new Vector3D(-3, 0, -2), .5f,  Color.GREEN,.2f,4,1,1,0,2));
-        scene01.addObject(new Sphere(new Vector3D(0, 0, -2), .5f, Color.YELLOW,.2f,4,1f,1,0,2));
-        scene01.addObject(new Sphere(new Vector3D(3, 0, -2), .5f, Color.RED,.2f,4,1,1,0,2));
+        scene01.addObject(new Sphere(new Vector3D(-3, 0, -2), 0.5f,  Color.GREEN,.2f,4,1,1,0,2));
+        scene01.addObject(new Sphere(new Vector3D(0, 0, -2), 1f, Color.YELLOW,.2f,4,1f,1,0,2));
+        scene01.addObject(new Sphere(new Vector3D(3, 0, -2), 0.5f, Color.RED,.2f,4,1,1,0,2));
 
-        scene01.addObject(new Sphere(new Vector3D(1, 3, -2), .5f,  new Color(50,50,50),.2f,4,1,1,0,2));
-        scene01.addObject(new Sphere(new Vector3D(1, 3, 0), .5f, new Color(50,50,50),.2f,4,1,1,0,2));
-        scene01.addObject(new Sphere(new Vector3D(1, 3, 2), .5f, new Color(50,50,50),.2f,4,1,1,0,2));
+        scene01.addObject(new Sphere(new Vector3D(1, 3, 0), 0.5f,  new Color(50,50,50),.2f,4,1,1,0,2));
+        scene01.addObject(new Sphere(new Vector3D(0, 3, 0), 0.5f, new Color(50,50,50),.2f,4,1,1,0,2));
+        scene01.addObject(new Sphere(new Vector3D(-1, 3, 0), 0.5f, new Color(50,50,50),.2f,4,1,1,0,2));
 
-        scene01.addObject(new Sphere(new Vector3D(8, 8, 5), 0.5f, Color.PINK,.1f,10.5f,20.5f, 2,.0f,0.0f));
-        scene01.addObject(new Sphere(new Vector3D(4, 3, 1), 0.5f, Color.MAGENTA,.1f,10.5f,20.5f, 2,.0f,0.0f));
+        scene01.addObject(new Sphere(new Vector3D(1, 1, 0), 0.5f,  new Color(50,50,50),.2f,4,1,1,0,2));
+        scene01.addObject(new Sphere(new Vector3D(0, 1, 0), 0.5f, new Color(50,50,50),.2f,4,1,1,0,2));
+        scene01.addObject(new Sphere(new Vector3D(-1, 1, 0), 0.5f, new Color(50,50,50),.2f,4,1,1,0,2));
+
+        scene01.addObject(new Sphere(new Vector3D(4, 6, 0), 0.5f, Color.PINK,.1f,10.5f,20.5f, 2,.0f,1.0f));
         scene01.addObject(new Sphere(new Vector3D(-4, 3, 1), 0.5f, Color.MAGENTA,.1f,10.5f,20.5f, 2,.0f,0.0f));
         scene01.addObject(new Sphere(new Vector3D(-5, -2, 0), 0.5f, Color.YELLOW,.1f,10.5f,20.5f, 2,.0f,0.0f));
 
@@ -94,11 +97,11 @@ public class Raytracer {
 
             // Polygon - Triangle - Object
             if(color == 1){
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-2,0),Color.RED, .1f,10.5f,20.5f, 2,.0f,0.0f, Scale, Rotate));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-2,0),Color.RED, .1f,20.5f,102.5f, 2,.0f,0.0f, Scale, Rotate));
             }else if(color == 2){
                 scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-2,0),Color.BLUE, .2f,20,30f, 1,0,2, Scale, Rotate));
             }else if(color == 3){
-                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-2,0),Color.PINK, .1f,10.5f,20.5f, 2,.0f,0.0f, Scale, 1));
+                scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-2,0),Color.PINK, .1f,10.5f,20.5f, 2,.0f,0.0f, Scale, Rotate));
             }else if(color == 4){
                 scene01.addObject(Reader.GetPolygon(path, new Vector3D(cont,-2,0),Color.ORANGE, .1f,10.5f,20.5f, 2,.0f,0.0f, Scale, Rotate));
             }else if(color == 5){
@@ -114,7 +117,10 @@ public class Raytracer {
             }
             cont = (float) (cont + 2.5);
         }
-        scene01.addObject(Reader.GetPolygon("ground.obj", new Vector3D(0,-4,0),Color.WHITE,.2f, .2f, .1f,.51f,.10f,0,1, 0));
+        scene01.addObject(Reader.GetPolygon("ground.obj", new Vector3D(0,-4,0),Color.WHITE,.2f, .2f, .1f,.51f,1f,0,1, 0));
+        //scene01.addObject(Reader.GetPolygon("Raccoon.obj", new Vector3D(3,-2,0),Color.PINK,.2f, .2f, .1f,.51f,1f,0,.05, 1));
+
+
         System.out.println(new Date());
 
         BufferedImage image = raytrace(scene01);
@@ -160,7 +166,7 @@ public class Raytracer {
         }
         executorService.shutdown();
         try {
-            if(!executorService.awaitTermination(16, TimeUnit.MINUTES)) {
+            if(!executorService.awaitTermination(20, TimeUnit.MINUTES)) {
                 executorService.shutdownNow();
             }
         } catch(InterruptedException e) {
@@ -179,18 +185,17 @@ public class Raytracer {
      * @param closestIntersection
      * @param light
      * @param pixelColor
-     * @param camera
+     * @param mainCamera
      * @param objects
      * @param nearFarPlanes
      * @return
      */
 
-    public static Color getObjectColor(Intersection closestIntersection, Light light, Color pixelColor, Camera camera, ArrayList<Object3D> objects, float[] nearFarPlanes){
+    public static Color getObjectColor(Intersection closestIntersection, Light light, Color pixelColor, Camera mainCamera, ArrayList<Object3D> objects, float[] nearFarPlanes){
         double distance =  Vector3D.magnitude(Vector3D.substract(closestIntersection.getPosition(), light.getPosition()));
         Object3D object = closestIntersection.getObject();
         float nDotL = light.getNDotL(closestIntersection);
         float intensity = (float) light.getIntensity() * nDotL;
-        //float intensity = getIntensity(closestIntersection, light);
         float [] colors = getAmbient(object);
         Color ambient = new Color(clamp(colors[0], 0, 1), clamp(colors[1], 0, 1), clamp(colors[2], 0, 1));
         pixelColor = addColor(pixelColor, ambient);
@@ -202,8 +207,11 @@ public class Raytracer {
         colors = getDiffuse(colors, intensity, distance, light);
         distance =  Vector3D.magnitude(Vector3D.substract(closestIntersection.getPosition(), light.getPosition()));
         Color diffuse = new Color(clamp(colors[0], 0, 1), clamp(colors[1], 0, 1), clamp(colors[2], 0, 1));
-        Intersection lightIntersection = getHit(camera, nearFarPlanes, objects, closestIntersection.getPosition(), light.getPosition());
-        Color specular = specular(light, closestIntersection, colors, object, lightIntersection);
+
+        Ray ray = new Ray(closestIntersection.getPosition(), light.getPosition());
+        Intersection lightIntersection = Raycast.raycast(ray,objects,null,new float[]{(float) mainCamera.getPosition().getZ() + nearFarPlanes[0], (float) mainCamera.getPosition().getZ() + nearFarPlanes[1]});
+
+        Color specular = specular(light, closestIntersection, colors, object);
 
         if (lightIntersection != null){
             double distObj = Vector3D.magnitude(Vector3D.substract(lightIntersection.getPosition(), light.getPosition()));
@@ -221,22 +229,6 @@ public class Raytracer {
             pixelColor = addColor(pixelColor, specular);
         }
         return pixelColor;
-    }
-
-
-    /**
-     *
-     * @param mainCamera
-     * @param nearFarPlanes
-     * @param objects
-     * @param direction
-     * @param start
-     * @return
-     */
-    private static Intersection getHit(Camera mainCamera, float[] nearFarPlanes, ArrayList<Object3D> objects, Vector3D direction, Vector3D start) {
-        Ray ray = new Ray(start, direction);
-        Intersection hit = Raycast.raycast(ray, objects, null, new float[] {(float) mainCamera.getPosition().getZ() + nearFarPlanes[0], (float) mainCamera.getPosition().getZ() + nearFarPlanes[1]} );
-        return hit;
     }
 
     /**
@@ -275,10 +267,11 @@ public class Raytracer {
      * @param obj
      * @return
      */
-    private static Color specular (Light light, Intersection intersection, float [] colors, Object3D obj, Intersection lightIntersection){
+    private static Color specular (Light light, Intersection intersection, float [] colors, Object3D obj){
 
 
         Vector3D halfVector = Vector3D.add(light.getPosition(), intersection.getPosition());
+        halfVector = new Vector3D(halfVector.getX() / Vector3D.magnitude(halfVector), halfVector.getY() / Vector3D.magnitude(halfVector), halfVector.getZ() / Vector3D.magnitude(halfVector));
         halfVector = Vector3D.normalize(halfVector);
         //Vector3D h = Vector3D.scalarMultiplication(l_v, 1.0f / Vector3D.magnitude(l_v));
         float specular = (float) Math.pow(Vector3D.dotProduct(intersection.getNormal(), halfVector), obj.getShininess());
