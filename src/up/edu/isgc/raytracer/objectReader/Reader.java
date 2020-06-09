@@ -77,6 +77,12 @@ public class Reader {
                             } else {
                                 normals.add(new Vector3D(  z,y, x));
                             }
+                        }else {
+                            if (line.startsWith("v ")) {
+                                vertices.add(new Vector3D(x, y, z));
+                            } else {
+                                normals.add(new Vector3D(x, y, z));
+                            }
                         }
                     }
                 } else if (line.startsWith("f ")) {

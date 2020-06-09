@@ -33,7 +33,7 @@ public class Raycast {
                 Intersection intersection = currentObj.getIntersection(ray);
                 if(intersection != null){
                     double distance = intersection.getDistance();
-                    if(distance >= 0 && (closestIntersection == null || distance < closestIntersection.getDistance()) && (ClippingPlanes == null || (intersection.getPosition().getZ() >= ClippingPlanes[0] && intersection.getPosition().getZ() <= ClippingPlanes[1]))) {
+                    if(distance >= 0.00001f && (closestIntersection == null || distance < closestIntersection.getDistance()) && (ClippingPlanes == null || (intersection.getPosition().getZ() >= ClippingPlanes[0] && intersection.getPosition().getZ() <= ClippingPlanes[1]))) {
                         closestIntersection = intersection;
                     }
                 }

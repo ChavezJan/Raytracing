@@ -12,8 +12,6 @@ public class Vector3D {
     private static final Vector3D ZERO = new Vector3D(0.0, 0.0, 0.0);
     private double x, y, z;
 
-
-
     /**
      * It is the constructor of the Vector3D
      *

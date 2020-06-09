@@ -41,34 +41,25 @@ public class Multithread {
                 float cameraZ = (float) mainCamera.getPosition().getZ();
                 Intersection closestIntersection = Raycast.raycast(ray, objects, null, new float[]{cameraZ + nearFarPlanes[0], cameraZ + nearFarPlanes[1]});
 
+
                 //Background color
                 Color pixelColor = Color.BLACK;
                 if (closestIntersection != null) {
-                    pixelColor = Color.BLACK;
                     for (Light light : lights) {
 
-                        pixelColor = Raytracer.addColor(pixelColor, Raytracer.getObjectColor(closestIntersection, light, pixelColor, mainCamera, objects, nearFarPlanes));
-                        if (closestIntersection.getObject().getReflection() > 0)
-                            pixelColor = Raytracer.addColor(pixelColor, Raytracer.calculateReflection(closestIntersection, light, objects, mainCamera, nearFarPlanes));
-                        if (closestIntersection.getObject().getRefraction() > 0){
-                            pixelColor = Raytracer.addColor(pixelColor, Raytracer.calculateRefraction(closestIntersection, light, objects, mainCamera, nearFarPlanes));
-                        }
-//___________________________________________________________
-                        /*
-                        double distance = Vector3D.magnitude(Vector3D.substract(closestIntersection.getPosition(), light.getPosition()));
+                        Ray Shadow = new Ray(closestIntersection.getPosition(),light.getPosition());
+                        Intersection ShadowRay = Raycast.raycast(Shadow,objects,closestIntersection.getObject(),new float[]{cameraZ + nearFarPlanes[0], cameraZ + nearFarPlanes[1]});
 
-                        float nDotL = light.getNDotL(closestIntersection);
-                        float intensity = (float) light.getIntensity() * nDotL;
-                        Color lightColor = light.getColor();
-                        Color objColor = closestIntersection.getObject().getColor();
-                        float[] lightColors = new float[]{lightColor.getRed() / 255.0f, lightColor.getGreen() / 255.0f, lightColor.getBlue() / 255.0f};
-                        float[] objColors = new float[]{objColor.getRed() / 255.0f, objColor.getGreen() / 255.0f, objColor.getBlue() / 255.0f};
-                        for (int colorIndex = 0; colorIndex < objColors.length; colorIndex++) {
-                            objColors[colorIndex] *= (intensity / (Math.pow(distance, 2))) * lightColors[colorIndex];
+                        if(ShadowRay == null){
+
+                            pixelColor = Colors.addColor(pixelColor, Colors.ObjectColor(closestIntersection, light, pixelColor, mainCamera, objects, nearFarPlanes));
+
+                            if (closestIntersection.getObject().getRefraction() > 0)
+                                pixelColor = Colors.addColor(pixelColor, Colors.Refraction(closestIntersection, light, objects, mainCamera, nearFarPlanes));
+                            if (closestIntersection.getObject().getReflection() > 0)
+                                pixelColor = Colors.addColor(pixelColor, Colors.Reflection(closestIntersection, light, objects, mainCamera, nearFarPlanes));
+
                         }
-                        Color diffuse = new Color(Raytracer.clamp(objColors[0], 0, 1), Raytracer.clamp(objColors[1], 0, 1), Raytracer.clamp(objColors[2], 0, 1));
-                        pixelColor = Raytracer.addColor(pixelColor, diffuse);
-                         */
                     }
                 }
                 setRGB(image,i,j,pixelColor);
